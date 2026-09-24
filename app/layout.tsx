@@ -20,8 +20,19 @@ const isLaunched = process.env.SITE_LAUNCHED === 'true'
 // Analytics IDs — empty string means "not configured yet", nothing loads.
 // ▶ When you create your GTM container:  edit lib/company.ts → gtmId
 // ▶ When you create your CookieYes acct: edit lib/company.ts → cookieYesId
-const gtmActive      = Boolean(company.gtmId)
-const cookieYesSrc   = company.cookieYesId
+const cookieYesRequested = Boolean(company.cookieYesId)
+const gtmRequested       = Boolean(company.gtmId)
+
+// GTM must never load without a consent banner in place. If gtmId is set but
+// cookieYesId isn't, block GTM entirely rather than tracking with no banner.
+const gtmBlockedByMissingConsent = gtmRequested && !cookieYesRequested
+
+const cookieYesActive = cookieYesRequested
+const gtmActive        = gtmRequested && cookieYesRequested
+// Consent Mode v2 defaults must be present before either script can load.
+const consentInitActive = cookieYesRequested || gtmRequested
+
+const cookieYesSrc = cookieYesActive
   ? `https://cdn-cookieyes.com/client_data/${company.cookieYesId}/script.js`
   : null
 
@@ -49,19 +60,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sv" className={inter.variable}>
       <head>
-        {/* Analytics loads only when both IDs are configured in lib/company.ts */}
-        {gtmActive && (
-          <>
-            {/* 1. Consent Mode v2 defaults — must precede GTM */}
-            <ConsentInit />
-            {/* 2. CookieYes — reads saved consent and fires gtag('consent','update',…) */}
-            {cookieYesSrc && (
-              // eslint-disable-next-line @next/next/no-sync-scripts
-              <script id="cookieyes" type="text/javascript" src={cookieYesSrc} async />
-            )}
-            {/* 3. Google Tag Manager */}
-            <GTMHeadScript />
-          </>
+        {/* 1. Consent Mode v2 defaults — must precede CookieYes and GTM, loads
+               whenever either is configured in lib/company.ts */}
+        {consentInitActive && <ConsentInit />}
+        {/* 2. CookieYes — reads saved consent and fires gtag('consent','update',…).
+               Independent of GTM: loads whenever cookieYesId is configured. */}
+        {cookieYesSrc && (
+          // eslint-disable-next-line @next/next/no-sync-scripts
+          <script id="cookieyes" type="text/javascript" src={cookieYesSrc} async />
+        )}
+        {/* 3. Google Tag Manager — only loads when CookieYes is also active.
+               Tracking without a consent banner is not allowed. */}
+        {gtmActive && <GTMHeadScript />}
+        {gtmBlockedByMissingConsent && process.env.NODE_ENV !== 'production' && (
+          <script
+            id="gtm-consent-guard-warning"
+            dangerouslySetInnerHTML={{
+              __html:
+                "console.warn('[consent] gtmId is set in lib/company.ts but cookieYesId is empty — GTM will NOT load. Tracking without a consent banner is not allowed. Set company.cookieYesId to enable GTM.');",
+            }}
+          />
         )}
       </head>
       <body className="flex flex-col min-h-screen">

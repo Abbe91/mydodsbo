@@ -34,6 +34,15 @@ const COMPANY_CHECKS = [
   { re: /'placeholder'|"placeholder"/i, label: '"placeholder" placeholder' },
 ]
 
+// Consent/analytics IDs are safety-critical: GTM must never ship without
+// CookieYes wired up (see app/layout.tsx guard), so both must be explicitly
+// non-empty and non-placeholder before launch, not just "not obviously XXX".
+const REQUIRED_COMPANY_FIELDS = [
+  { field: 'gtmId',       re: /gtmId:\s*'([^']*)'/ },
+  { field: 'cookieYesId', re: /cookieYesId:\s*'([^']*)'/ },
+]
+const PLACEHOLDER_VALUE_RE = /XXX|example|placeholder|0{4}|1234567/i
+
 // ── File walker ───────────────────────────────────────────────────────────────
 
 function walk(dir) {
@@ -63,6 +72,8 @@ function addViolation(file, line, label) {
 
 const files = SCAN_DIRS.flatMap(d => walk(join(root, d)))
 const companyFile = join(root, 'lib', 'company.ts')
+const uppdragFile = join(root, 'content', 'uppdrag.ts')
+const UPPDRAG_EMPTY_RE = /export const uppdrag:\s*Uppdrag\[\]\s*=\s*\[\s*\]/
 
 for (const file of files) {
   const src = readFileSync(file, 'utf-8')
@@ -90,6 +101,24 @@ for (const file of files) {
         addViolation(file, '?', `company.ts: ${label}`)
       }
     }
+
+    // Explicit per-field checks for the consent/analytics IDs — only these
+    // two block the build with a field-specific message; everything else
+    // above is caught generically.
+    for (const { field, re } of REQUIRED_COMPANY_FIELDS) {
+      const match = re.exec(src)
+      const value = match?.[1] ?? ''
+      if (value === '') {
+        addViolation(file, '?', `company.ts: ${field} is empty — required before launch`)
+      } else if (PLACEHOLDER_VALUE_RE.test(value)) {
+        addViolation(file, '?', `company.ts: ${field} still has a placeholder value ("${value}")`)
+      }
+    }
+  }
+
+  // content/uppdrag.ts must contain at least one real completed job before launch
+  if (file === uppdragFile && UPPDRAG_EMPTY_RE.test(src)) {
+    addViolation(file, '?', 'uppdrag.ts: uppdrag array is empty — add at least one real completed job before launch')
   }
 }
 

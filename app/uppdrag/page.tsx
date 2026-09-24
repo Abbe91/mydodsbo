@@ -40,6 +40,11 @@ export default function UppdragPage() {
             </p>
           </div>
 
+          {uppdrag.length === 0 ? (
+            <p className="rounded-md border border-dashed border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-500">
+              Vi publicerar våra uppdrag här.
+            </p>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {uppdrag.map(u => (
               <Link
@@ -82,6 +87,7 @@ export default function UppdragPage() {
               </Link>
             ))}
           </div>
+          )}
         </div>
       </section>
     </>

@@ -65,7 +65,7 @@ const faqs = [
   {
     question: 'Hur lång tid tar en dödsbotömning?',
     answer:
-      'En genomsnittlig lägenhet tar 1–2 dagar. Villor och bostäder med mer bohag kan ta längre tid. Vi ger en uppskattning av tidsåtgången i samband med vår bedömning.',
+      'Det beror på bostadens storlek och mängden bohag. Vi ger en tydlig uppskattning av tidsåtgången i samband med vår kostnadsfria bedömning.',
   },
   {
     question: 'Kan ni hantera hela processen — från tömning till städning?',

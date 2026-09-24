@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Cookiepolicy',
@@ -14,6 +15,8 @@ const breadcrumbs = [
 ]
 
 export default function CookiesPage() {
+  const cookieYesActive = Boolean(company.cookieYesId)
+
   return (
     <>
       <div className="bg-stone-100 border-b border-stone-200 py-3">
@@ -93,23 +96,39 @@ export default function CookiesPage() {
               när cookiescanning körs. Den listar alla cookies som faktiskt hittas på
               webbplatsen med namn, leverantör, syfte och lagringstid.
             </p>
-            {/* CookieYes auto-generated cookie audit table — populated when CookieYes is configured */}
-            {/* TODO: CookieYes will auto-populate the cookie table below when configured */}
-            <div className="cky-audit-table-element" />
+            {cookieYesActive ? (
+              // CookieYes auto-generated cookie audit table — populated by the
+              // CookieYes script once loaded.
+              <div className="cky-audit-table-element" />
+            ) : (
+              <p className="rounded-md border border-dashed border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-500">
+                Cookietabellen visas här när cookiehanteraren (CookieYes) är
+                konfigurerad.
+              </p>
+            )}
 
             <h2>Hantera dina cookieinställningar</h2>
-            <p>
-              Du kan när som helst ändra eller återkalla ditt samtycke. Klicka på
-              knappen nedan för att öppna cookieinställningarna igen:
-            </p>
-            <p>
-              <button
-                className="cky-btn-revisit inline-flex items-center gap-2 rounded-md bg-brand-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
-                type="button"
-              >
-                Ändra dina cookieinställningar
-              </button>
-            </p>
+            {cookieYesActive ? (
+              <>
+                <p>
+                  Du kan när som helst ändra eller återkalla ditt samtycke. Klicka på
+                  knappen nedan för att öppna cookieinställningarna igen:
+                </p>
+                <p>
+                  <button
+                    className="cky-btn-revisit inline-flex items-center gap-2 rounded-md bg-brand-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
+                    type="button"
+                  >
+                    Ändra dina cookieinställningar
+                  </button>
+                </p>
+              </>
+            ) : (
+              <p className="rounded-md border border-dashed border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-500">
+                Knappen för att ändra cookieinställningar visas här när
+                cookiehanteraren (CookieYes) är konfigurerad.
+              </p>
+            )}
             <p className="text-sm text-stone-500">
               Du kan även hantera cookies direkt i din webbläsare via
               inställningarna. Observera att blockering av alla cookies kan påverka

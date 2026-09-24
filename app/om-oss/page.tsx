@@ -96,8 +96,8 @@ export default function OmOssPage() {
               parkeringsregler, logistik i äldre bebyggelse.
             </p>
             <p>
-              Vi svarar normalt inom en arbetsdag och kan i de flesta fall boka in en
-              bedömning redan inom en vecka.
+              Vi svarar normalt inom en arbetsdag och bokar in en bedömning så snart
+              som möjligt efter första kontakt.
             </p>
           </div>
 
