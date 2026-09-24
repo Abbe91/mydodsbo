@@ -1,0 +1,30 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION    = "20"
+  SITE_LAUNCHED   = "false"
+
+# ── Global headers (all contexts) ──────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Deploy-preview: always noindex ────────────────────────────────────────────
+# X-Robots-Tag is injected into out/_headers by scripts/postbuild.mjs
+# when Netlify's $CONTEXT env var is "deploy-preview" or "branch-deploy".
