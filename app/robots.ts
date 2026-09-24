@@ -11,7 +11,8 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules:   { userAgent: '*', allow: '/', disallow: ['/tack'] },
+    // /__forms.html is a static Netlify Forms detection stub (see public/__forms.html) — never meant to be crawled.
+    rules:   { userAgent: '*', allow: '/', disallow: ['/tack', '/__forms.html'] },
     sitemap: `${company.siteUrl}/sitemap.xml`,
   }
 }

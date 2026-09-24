@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 import { company } from '@/lib/company'
 
 export const dynamic = 'force-static'
+// Note: public/__forms.html (Netlify Forms detection stub) is intentionally
+// never listed here — see also its disallow entry in app/robots.ts.
 import { uppdrag } from '@/content/uppdrag'
 import { guides } from '@/content/guides'
 

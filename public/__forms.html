@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Formulärdetektering</title>
+</head>
+<body>
+<!--
+  Static form-detection stub for Netlify Forms.
+
+  components/forms/ContactForm.tsx renders the same fields via Next.js, but
+  Netlify's build-time HTML scan wasn't picking it up there. This plain,
+  unstyled duplicate exists only so the scanner has a form to find — it is
+  never linked from the site nav and is excluded via robots.txt/netlify.toml.
+
+  Keep every name="" attribute below in sync with ContactForm.tsx:
+  form name, hidden form-name value, honeypot field, and all input names.
+-->
+<form name="kontakt" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="kontakt">
+  <p>
+    <label>Fyll inte i detta fält: <input name="bot-field"></label>
+  </p>
+  <p>
+    <label>Namn <input type="text" name="name"></label>
+  </p>
+  <p>
+    <label>Telefon <input type="tel" name="phone"></label>
+  </p>
+  <p>
+    <label>Stad / Stadsdel <input type="text" name="city"></label>
+  </p>
+  <p>
+    <label>Meddelande <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Skicka</button>
+  </p>
+</form>
+</body>
+</html>
