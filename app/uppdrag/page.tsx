@@ -5,7 +5,10 @@ import { uppdrag } from '@/content/uppdrag'
 
 export const metadata: Metadata = {
   title:       'Genomförda uppdrag',
-  description: 'Se exempel på dödsbon vi hanterat i Göteborg — tömning, städning och bortforsling i olika stadsdelar och bostadstyper.',
+  description:
+    uppdrag.length === 0
+      ? 'Här publicerar vi framöver exempel på dödsbon vi hanterat i Göteborg — tömning, städning och bortforsling.'
+      : 'Se exempel på dödsbon vi hanterat i Göteborg — tömning, städning och bortforsling i olika stadsdelar och bostadstyper.',
   alternates:  { canonical: '/uppdrag' },
 }
 
@@ -35,14 +38,15 @@ export default function UppdragPage() {
           <div className="max-w-2xl mb-10">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Genomförda uppdrag</h1>
             <p className="text-lg text-stone-500">
-              Här delar vi exempel på uppdrag vi genomfört i Göteborg. Varje dödsbo är unikt —
-              storleken, bohagsmängden och vad som behövs varierar.
+              {uppdrag.length === 0
+                ? 'Här kommer vi framöver att publicera exempel på uppdrag vi genomfört i Göteborg. Varje dödsbo är unikt — storleken, bohagsmängden och vad som behövs varierar.'
+                : 'Här delar vi exempel på uppdrag vi genomfört i Göteborg. Varje dödsbo är unikt — storleken, bohagsmängden och vad som behövs varierar.'}
             </p>
           </div>
 
           {uppdrag.length === 0 ? (
             <p className="rounded-md border border-dashed border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-500">
-              Vi publicerar våra uppdrag här.
+              Vi publicerar våra uppdrag här när vi har genomfört dem.
             </p>
           ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
