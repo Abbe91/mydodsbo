@@ -27,16 +27,38 @@ export default function OmOssPage() {
           <h1 className="text-3xl md:text-4xl font-bold mb-6">Om oss</h1>
 
           <div className="prose-content">
-            <h2>Varför vi gör det här</h2>
+            <h2>Om Trygg Dödsbo</h2>
             <p>
-              Att tömma och städa ett dödsbo är sällan bara ett praktiskt arbete. Det är
-              en del av ett avsked — ofta i ett skede då familjen redan bär tungt. Det är
-              den insikten som ligger till grund för allt vi gör på Trygg Dödsbo.
+              Trygg Dödsbo är ett nystartat företag i Göteborg. Företaget är nytt — men
+              arbetet är vi vana vid. Vi som står bakom det har arbetat i branschen i flera
+              år och har sett vad som fungerar och vad som inte gör det.
             </p>
             <p>
-              Vi startade Trygg Dödsbo av en enkel anledning: vi ville erbjuda en tjänst
-              som vi själva skulle känna oss trygga med att anlita. Det innebär ärliga
-              priser, tydlig kommunikation och ett arbete vi faktiskt kan stå bakom.
+              Det var också därför vi startade. Vi har sett hur ett dödsbo kan hanteras när
+              det går fort och hur det kan hanteras när någon tar sig tid. Skillnaden märks
+              på hur anhöriga mår efteråt. Vi ville göra det på vårt eget sätt: tydliga
+              priser, inga överraskningar och tid att lyssna på vad familjen faktiskt
+              behöver.
+            </p>
+
+            <h3>Vilka vi är</h3>
+            <p>
+              Vi är sex personer. En som sköter kontakten med dig och svarar på dina frågor.
+              En som är specialiserad på att värdera bohag och lösöre. Och fyra som utför
+              tömning, bärning och transport.
+            </p>
+            <p>
+              Det betyder att du har en kontaktperson genom hela processen, och att det är
+              någon med rätt kunskap som bedömer värdet på det som finns i bostaden.
+            </p>
+
+            <h3>Varför vi gör det här</h3>
+            <p>
+              Jag har själv ingen familj i Sverige. Det här arbetet för mig nära familjer i
+              en period som ofta är tung, och jag har alltid velat göra något som gör
+              vardagen lättare för andra. Jag tror på att det man ger tillbaka kommer
+              tillbaka — och att någon finns där för mina anhörig om de behöver hjälp, på
+              samma sätt som vi finns här för dig.
             </p>
 
             <h2>Vad vi gör</h2>

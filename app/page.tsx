@@ -131,38 +131,52 @@ export default function HomePage() {
       {/* How it works */}
       <section className="section bg-white">
         <div className="container">
-          <div className="mb-10 max-w-xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Så här går det till</h2>
-            <p className="text-stone-500">Tre enkla steg från kontakt till avslutat uppdrag.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '1',
-                heading: 'Kontakt & bedömning',
-                body: 'Du kontaktar oss och vi bokar in en kostnadsfri besiktning på plats. Vi går igenom vad som behöver göras och ger dig en tydlig offert.',
-              },
-              {
-                step: '2',
-                heading: 'Tömning & hantering',
-                body: 'Vi utför uppdraget på överenskomna dagar. Bohaget sorteras, värdesaker hanteras separat och allt övrigt körs bort på ett ansvarsfullt sätt.',
-              },
-              {
-                step: '3',
-                heading: 'Städning & överlämning',
-                body: 'Vi avslutar med en grundlig städning och lämnar bostaden i det skick som avtalats — redo för visning, uthyrning eller försäljning.',
-              },
-            ].map(({ step, heading, body }) => (
-              <div key={step} className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-brand-700 text-white font-bold flex items-center justify-center">
-                  {step}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-stone-800 mb-1">{heading}</h3>
-                  <p className="text-stone-500 text-sm leading-relaxed">{body}</p>
-                </div>
-              </div>
-            ))}
+          <div className="prose-content">
+            <h2>Så går det till — från första kontakt till återlämnad nyckel</h2>
+
+            <h3>1. Du hör av dig</h3>
+            <p>
+              Ring oss eller skicka ett meddelande via formuläret. Vi återkommer så snart vi
+              kan för att höra vad du behöver hjälp med. Du behöver inte ha bestämt något i
+              förväg.
+            </p>
+
+            <h3>2. Kostnadsfritt hembesök</h3>
+            <p>
+              Vi bokar en tid som passar dig och kommer ut till bostaden. Vi går igenom
+              utrymmena tillsammans och lyssnar på vad du vill ha gjort: vad som ska sparas,
+              om något ska magasineras, om bostaden ska flyttstädas inför försäljning eller
+              avflyttning, eller om trädgården behöver röjas. Besöket är kostnadsfritt och du
+              binder dig inte till något.
+            </p>
+
+            <h3>3. Värdering av lösöret</h3>
+            <p>
+              Finns det möbler, konst, smycken eller annat av värde gör vi en värdering.
+              Ibland innebär det att värdet dras av från kostnaden — och ibland att vi betalar
+              dig. Vad som gäller i ditt fall ser du svart på vitt i offerten.
+            </p>
+
+            <h3>4. Offert och avtal</h3>
+            <p>
+              Du får en offert med ett tydligt pris för det ni kommit överens om. Är du nöjd
+              skickar vi ett avtal att skriva under, så att du vet exakt vad som ingår innan
+              vi börjar.
+            </p>
+
+            <h3>5. Vi utför arbetet</h3>
+            <p>
+              Vi bestämmer ett start- och slutdatum tillsammans och du lämnar över nycklarna.
+              En tömning tar oftast en till två dagar beroende på bostadens storlek och hur
+              mycket bohag som finns. Dyker något upp under arbetets gång hör vi av oss.
+            </p>
+
+            <h3>6. Överlämning och faktura</h3>
+            <p>
+              När bostaden är tömd och eventuellt städad går vi igenom den tillsammans. Är du
+              nöjd lämnar vi tillbaka nycklarna. Du betalar först efteråt — fakturan kommer
+              när arbetet är godkänt.
+            </p>
           </div>
         </div>
       </section>
@@ -223,8 +237,12 @@ export default function HomePage() {
 
             <div id="kontakt-formulär" className="bg-stone-50 rounded-2xl p-6 md:p-8">
               <h2 className="text-xl font-bold mb-2">Skicka en förfrågan</h2>
-              <p className="text-stone-500 text-sm mb-6">
+              <p className="text-stone-500 text-sm mb-2">
                 Vi återkommer inom en arbetsdag med en kostnadsfri bedömning.
+              </p>
+              <p className="text-stone-500 text-sm mb-6">
+                Vi lämnar ett fast pris efter hembesöket, och du betalar mot faktura
+                efteråt — ingen förskottsbetalning.
               </p>
               <ContactForm />
             </div>

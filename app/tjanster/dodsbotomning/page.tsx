@@ -5,6 +5,7 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
+import { VadHanderMedSakerna } from '@/components/content/VadHanderMedSakerna'
 
 export const metadata: Metadata = {
   title:       'Dödsbotömning i Göteborg',
@@ -70,14 +71,13 @@ export default function DodsbotomningPage() {
                 <h3>1. Inventering och genomgång</h3>
                 {/* TODO: Beskriv hur ni börjar varje uppdrag — vad ni tittar på, vad ni frågar */}
 
-                <h3>2. Sortering av bohag</h3>
-                {/* TODO: Beskriv hur ni sorterar — vad går till återbruk, välgörenhet, tipp */}
-
-                <h3>3. Hantering av värdesaker</h3>
+                <h3>2. Hantering av värdesaker</h3>
                 {/* TODO: Beskriv hur ni identifierar och hanterar värdesaker */}
 
-                <h3>4. Bortforsling</h3>
+                <h3>3. Bortforsling</h3>
                 {/* TODO: Beskriv hur bortforsling går till och var ni lämnar gods */}
+
+                <VadHanderMedSakerna />
 
                 <h2>Vad påverkar priset?</h2>
                 {/* TODO: Skriv ärligt om vilka faktorer som påverkar priset — utan att locka med påhittade rabatter */}

@@ -5,6 +5,7 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
+import { vadHanderMedSakernaId } from '@/content/vad-hander-med-sakerna'
 
 export const metadata: Metadata = {
   title:       'Värdering & uppköp av dödsbo i Göteborg',
@@ -70,6 +71,13 @@ export default function VarderingPage() {
 
                 <h2>Uppköp direkt på plats</h2>
                 {/* TODO: Förklara hur uppköpsprocessen fungerar — hur ni sätter pris, hur betalning sker */}
+                <p>
+                  Föremål vi inte köper upp direkt kan vi sälja vidare åt dig — läs mer under{' '}
+                  <Link href={`/tjanster/dodsbotomning#${vadHanderMedSakernaId}`}>
+                    Vad händer med sakerna?
+                  </Link>{' '}
+                  på sidan om dödsbotömning.
+                </p>
 
                 <h2>När vi inte kan värdera</h2>
                 {/* TODO: Var ärlig om gränserna för er kompetens och hur ni hjälper vidare */}

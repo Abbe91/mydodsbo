@@ -66,43 +66,48 @@ export default function PriserPage() {
                 bara ett tydligt fast pris baserat på din specifika situation.
               </p>
 
-              {/* Pricing overview */}
-              <div className="space-y-6 mb-12">
-                <div className="bg-white border border-stone-200 rounded-xl p-6">
-                  <h2 className="text-lg font-semibold mb-1">Dödsbotömning</h2>
-                  <p className="text-stone-500 text-sm mb-3">
-                    Inkluderar inventering, sortering, hantering av bohag och bortforsling.
-                  </p>
-                  {/* TODO: Ange ditt faktiska prisintervall när du känner dig trygg med det */}
-                  <p className="text-sm text-stone-400 italic">Pris anges vid kostnadsfri bedömning på plats.</p>
-                </div>
+              <div className="prose-content">
+                <h2>Vad kostar det?</h2>
+                <p>
+                  Vi lämnar alltid ett fast pris efter hembesöket. Du vet exakt vad arbetet
+                  kostar innan vi sätter igång, och priset ändras inte längs vägen.
+                </p>
 
-                <div className="bg-white border border-stone-200 rounded-xl p-6">
-                  <h2 className="text-lg font-semibold mb-1">Dödsbostädning</h2>
-                  <p className="text-stone-500 text-sm mb-3">
-                    Grundlig städning av hela bostaden efter tömning.
-                  </p>
-                  {/* TODO: Ange ditt faktiska prisintervall */}
-                  <p className="text-sm text-stone-400 italic">Pris anges vid kostnadsfri bedömning på plats.</p>
-                </div>
+                <h3>Varför vi inte har en prislista</h3>
+                <p>
+                  Två dödsbon är sällan lika. Priset beror på hur mycket bohag som finns, hur
+                  bostaden ser ut och vad som ska göras. Därför sätter vi priset först när vi
+                  har varit på plats och sett utrymmena — det är enda sättet att ge dig en
+                  siffra som håller.
+                </p>
 
-                <div className="bg-white border border-stone-200 rounded-xl p-6">
-                  <h2 className="text-lg font-semibold mb-1">Kombinationspaket – tömning & städning</h2>
-                  <p className="text-stone-500 text-sm mb-3">
-                    Det kompletta paketet: vi hanterar allt från tömning till slutstädning.
-                  </p>
-                  {/* TODO: Beskriv paketerbjudandet och eventuell prisförmån */}
-                  <p className="text-sm text-stone-400 italic">Pris anges vid kostnadsfri bedömning på plats.</p>
-                </div>
+                <h3>Ibland kostar det ingenting</h3>
+                <p>
+                  Finns det möbler, konst eller annat av värde räknas det av mot kostnaden för
+                  arbetet. Ibland täcker värdet hela jobbet, och ibland blir det pengar över
+                  till dig. Hur det ser ut i ditt fall får du veta i offerten, innan du
+                  bestämmer dig.
+                </p>
 
-                <div className="bg-white border border-stone-200 rounded-xl p-6">
-                  <h2 className="text-lg font-semibold mb-1">Värdering & bortforsling</h2>
-                  <p className="text-stone-500 text-sm mb-3">
-                    Inventering, värdering av bohag och transport.
-                  </p>
-                  {/* TODO: Beskriv prissättning för dessa tjänster */}
-                  <p className="text-sm text-stone-400 italic">Pris anges vid kostnadsfri bedömning på plats.</p>
-                </div>
+                <h3>Det här påverkar priset</h3>
+                <ul>
+                  <li>Mängden bohag som ska tömmas</li>
+                  <li>Bostadens storlek</li>
+                  <li>
+                    Våningsplan och hiss — saknas hiss, eller är hissen för liten för möbler,
+                    behöver allt bäras i trappan
+                  </li>
+                  <li>
+                    Vilka tjänster du vill ha med, till exempel flyttstädning eller röjning
+                    av trädgården
+                  </li>
+                </ul>
+
+                <h3>Du betalar efteråt</h3>
+                <p>
+                  Fakturan kommer när arbetet är utfört och du har godkänt resultatet. Ingen
+                  förskottsbetalning.
+                </p>
               </div>
 
               <div className="mt-10 border-t border-stone-200 pt-10">

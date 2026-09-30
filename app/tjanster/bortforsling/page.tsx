@@ -5,6 +5,7 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
+import { VadHanderMedSakerna } from '@/components/content/VadHanderMedSakerna'
 
 export const metadata: Metadata = {
   title:       'Bortforsling av dödsbo i Göteborg',
@@ -66,7 +67,7 @@ export default function BortforslingPage() {
                 {/* TODO: Beskriv er process — hur ni sorterar, väljer mottagare, dokumenterar */}
 
                 <h2>Återbruk och återvinning</h2>
-                {/* TODO: Förklara hur ni prioriterar återbruk och vad ni lämnar till välgörenhet */}
+                <VadHanderMedSakerna only={['skanka', 'kassera']} hideHeading />
 
                 <h2>Transport och fordon</h2>
                 {/* TODO: Beskriv er fordonsflotta och hur ni hanterar transport praktiskt */}
