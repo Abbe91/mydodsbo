@@ -5,6 +5,7 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Dödsbostädning i Göteborg',
@@ -53,58 +54,101 @@ export default function DodsbostadningPage() {
         </div>
       </div>
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">Dödsbostädning i Göteborg</h1>
+      {/* Intro — eyebrow is the one accent moment on this page */}
+      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
+        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+          Tjänster
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
+          Dödsbostädning i Göteborg
+        </h1>
+        <a
+          href={`tel:${company.phoneTel}`}
+          className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
+        >
+          Ring oss direkt: {company.phone}
+        </a>
+      </div>
 
-              {/* TODO: Skriv din ingress om vad som är viktigt i en dödsbostädning */}
+      {/* Full-bleed image slot — hero photo goes here later */}
+      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
+        <p className="text-sm text-stone-400 italic">Bildplats — foto från en städad bostad tillkommer</p>
+      </div>
 
-              <div className="prose-content">
-                <h2>Vad ingår i en dödsbostädning?</h2>
-                {/* TODO: Lista vad ni städar — rum för rum, vad ni rengör, vad som är standard */}
+      <div className="container">
+        <div className="pt-16 md:pt-24 pb-16 md:pb-24">
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-md md:max-w-lg mb-12">
+            När bostaden är tömd återstår städningen. Ska lägenheten lämnas tillbaka till
+            hyresvärden eller visas för en köpare behöver den vara ordentligt ren — inte
+            bara dammsugen.
+          </p>
 
-                <h2>Så utför vi städningen</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Vad som ingår
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-12">
+            Vi gör en komplett flyttstädning av hela bostaden: kök med ugn, kyl och frys
+            avfrostad, fläkt och skåp rengjorda invändigt, badrum, fönster, golv och
+            dörrar. Vi går igenom varje rum så att bostaden är redo att lämnas över.
+          </p>
 
-                <h3>Kök</h3>
-                {/* TODO: Beskriv köksrengöringen — ugn, kylskåp, skåp, ytor */}
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Vi står för resultatet
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Får du anmärkningar från hyresvärden, mäklaren eller köparen kommer vi tillbaka
+            och gör om det som behöver göras. Du ska inte behöva betala för en städning som
+            inte höll.
+          </p>
+        </div>
 
-                <h3>Badrum</h3>
-                {/* TODO: Beskriv badrumsrengöringen */}
+        {/* Contained image slot — second photo goes here later */}
+        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
+          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett städuppdrag tillkommer</p>
+        </div>
 
-                <h3>Övriga rum</h3>
-                {/* TODO: Beskriv hur ni städar vardagsrum, sovrum, hall */}
+        <div className="mb-16 md:mb-24">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Hur lång tid det tar
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-12">
+            En vanlig lägenhet tar normalt en dag. Bokar du tömning och städning tillsammans
+            gör vi städningen direkt efter att bostaden är tömd, så att allt är klart i ett
+            sammanhang.
+          </p>
 
-                <h2>Städning i kombination med tömning</h2>
-                {/* TODO: Förklara fördelen med att boka tömning och städning tillsammans */}
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Bara städning går också bra
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Du behöver inte anlita oss för tömningen för att få hjälp med städningen. Är
+            bostaden redan tömd kommer vi och städar ändå.
+          </p>
+        </div>
 
-                <h2>Varför anlita oss för städningen?</h2>
-                {/* TODO: Skriv med egna ord — vad ni faktiskt gör som andra kanske inte gör */}
-              </div>
-
-              <div className="mt-10 border-t border-stone-200 pt-10">
-                <h2 className="text-xl font-semibold mb-6">Vanliga frågor om dödsbostädning</h2>
-                <div className="divide-y divide-stone-200">
-                  {faqs.map(f => (
-                    <FaqItem key={f.question} question={f.question} answer={f.answer} />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24 bg-stone-50 rounded-2xl p-6">
-                <h2 className="text-lg font-semibold mb-2">Kostnadsfri bedömning</h2>
-                <p className="text-stone-500 text-sm mb-5">
-                  Vi besiktar och lämnar offert utan kostnad eller förbindelser.
-                </p>
-                <ContactForm />
-              </div>
-            </aside>
+        {/* FAQ — plain, thin rule as separator */}
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
+          <h2 className="text-xl font-semibold text-stone-900 mb-6">Vanliga frågor om dödsbostädning</h2>
+          <div className="divide-y divide-stone-200">
+            {faqs.map(f => (
+              <FaqItem key={f.question} question={f.question} answer={f.answer} />
+            ))}
           </div>
         </div>
-      </section>
+
+        {/* Kontakta oss + form, plain — no card, no sidebar */}
+        <div className="pb-20 md:pb-28">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
+            Kostnadsfri bedömning
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Vi besiktar och lämnar offert utan kostnad eller förbindelser.
+          </p>
+          <div className="max-w-xl">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
 
       <section className="section bg-stone-50">
         <div className="container">

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Priser för dödsbotömning och städning',
@@ -54,84 +54,101 @@ export default function PriserPage() {
         </div>
       </div>
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Priser för dödsbotömning och städning
-              </h1>
-              <p className="text-lg text-stone-500 mb-10">
-                Vi tror på transparens. Inga dolda avgifter, inga överraskningar —
-                bara ett tydligt fast pris baserat på din specifika situation.
-              </p>
+      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
+        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+          Priser
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
+          Priser för dödsbotömning och städning
+        </h1>
+        <a
+          href={`tel:${company.phoneTel}`}
+          className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
+        >
+          Ring oss direkt: {company.phone}
+        </a>
+      </div>
 
-              <div className="prose-content">
-                <h2>Vad kostar det?</h2>
-                <p>
-                  Vi lämnar alltid ett fast pris efter hembesöket. Du vet exakt vad arbetet
-                  kostar innan vi sätter igång, och priset ändras inte längs vägen.
-                </p>
+      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
+        <p className="text-sm text-stone-400 italic">Bildplats — foto tillkommer</p>
+      </div>
 
-                <h3>Varför vi inte har en prislista</h3>
-                <p>
-                  Två dödsbon är sällan lika. Priset beror på hur mycket bohag som finns, hur
-                  bostaden ser ut och vad som ska göras. Därför sätter vi priset först när vi
-                  har varit på plats och sett utrymmena — det är enda sättet att ge dig en
-                  siffra som håller.
-                </p>
+      <div className="container">
+        <div className="pt-16 md:pt-24 pb-16 md:pb-24">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Vad kostar det?
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-12">
+            Vi lämnar alltid ett fast pris efter hembesöket. Du vet exakt vad arbetet
+            kostar innan vi sätter igång, och priset ändras inte längs vägen.
+          </p>
 
-                <h3>Ibland kostar det ingenting</h3>
-                <p>
-                  Finns det möbler, konst eller annat av värde räknas det av mot kostnaden för
-                  arbetet. Ibland täcker värdet hela jobbet, och ibland blir det pengar över
-                  till dig. Hur det ser ut i ditt fall får du veta i offerten, innan du
-                  bestämmer dig.
-                </p>
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
+            Varför vi inte har en prislista
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Två dödsbon är sällan lika. Priset beror på hur mycket bohag som finns, hur
+            bostaden ser ut och vad som ska göras. Därför sätter vi priset först när vi
+            har varit på plats och sett utrymmena — det är enda sättet att ge dig en
+            siffra som håller.
+          </p>
 
-                <h3>Det här påverkar priset</h3>
-                <ul>
-                  <li>Mängden bohag som ska tömmas</li>
-                  <li>Bostadens storlek</li>
-                  <li>
-                    Våningsplan och hiss — saknas hiss, eller är hissen för liten för möbler,
-                    behöver allt bäras i trappan
-                  </li>
-                  <li>
-                    Vilka tjänster du vill ha med, till exempel flyttstädning eller röjning
-                    av trädgården
-                  </li>
-                </ul>
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
+            Ibland kostar det ingenting
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Finns det möbler, konst eller annat av värde räknas det av mot kostnaden för
+            arbetet. Ibland täcker värdet hela jobbet, och ibland blir det pengar över
+            till dig. Hur det ser ut i ditt fall får du veta i offerten, innan du
+            bestämmer dig.
+          </p>
 
-                <h3>Du betalar efteråt</h3>
-                <p>
-                  Fakturan kommer när arbetet är utfört och du har godkänt resultatet. Ingen
-                  förskottsbetalning.
-                </p>
-              </div>
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
+            Det här påverkar priset
+          </h3>
+          <ul className="list-disc pl-5 space-y-2 text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            <li>Mängden bohag som ska tömmas</li>
+            <li>Bostadens storlek</li>
+            <li>
+              Våningsplan och hiss — saknas hiss, eller är hissen för liten för möbler,
+              behöver allt bäras i trappan
+            </li>
+            <li>
+              Vilka tjänster du vill ha med, till exempel flyttstädning eller röjning
+              av trädgården
+            </li>
+          </ul>
 
-              <div className="mt-10 border-t border-stone-200 pt-10">
-                <h2 className="text-xl font-semibold mb-6">Vanliga frågor om priser</h2>
-                <div className="divide-y divide-stone-200">
-                  {faqs.map(f => (
-                    <FaqItem key={f.question} question={f.question} answer={f.answer} />
-                  ))}
-                </div>
-              </div>
-            </div>
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
+            Du betalar efteråt
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Fakturan kommer när arbetet är utfört och du har godkänt resultatet. Ingen
+            förskottsbetalning.
+          </p>
+        </div>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24 bg-brand-50 border border-brand-200 rounded-2xl p-6">
-                <h2 className="text-lg font-semibold mb-2">Få en kostnadsfri offert</h2>
-                <p className="text-stone-500 text-sm mb-5">
-                  Vi besiktar alltid på plats och lämnar ett fast pris — utan förbindelser.
-                </p>
-                <ContactForm />
-              </div>
-            </aside>
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
+          <h2 className="text-xl font-semibold text-stone-900 mb-6">Vanliga frågor om priser</h2>
+          <div className="divide-y divide-stone-200">
+            {faqs.map(f => (
+              <FaqItem key={f.question} question={f.question} answer={f.answer} />
+            ))}
           </div>
         </div>
-      </section>
+
+        <div className="pb-20 md:pb-28">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
+            Få en kostnadsfri offert
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Vi besiktar alltid på plats och lämnar ett fast pris — utan förbindelser.
+          </p>
+          <div className="max-w-xl">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

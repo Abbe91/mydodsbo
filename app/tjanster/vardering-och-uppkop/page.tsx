@@ -6,6 +6,7 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
 import { vadHanderMedSakernaId } from '@/content/vad-hander-med-sakerna'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Värdering & uppköp av dödsbo i Göteborg',
@@ -54,57 +55,80 @@ export default function VarderingPage() {
         </div>
       </div>
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">Värdering & uppköp av dödsbo</h1>
+      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
+        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+          Tjänster
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
+          Värdering &amp; uppköp av dödsbo
+        </h1>
+        <a
+          href={`tel:${company.phoneTel}`}
+          className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
+        >
+          Ring oss direkt: {company.phone}
+        </a>
+      </div>
 
-              {/* TODO: Skriv om varför en noggrann inventering är viktig för anhöriga */}
+      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
+        <p className="text-sm text-stone-400 italic">Bildplats — foto från en värdering tillkommer</p>
+      </div>
 
-              <div className="prose-content">
-                <h2>Vad vi inventerar och värderar</h2>
-                {/* TODO: Beskriv vilka kategorier av föremål ni tittar på och hur ni bedömer dem */}
+      <div className="container">
+        <div className="pt-16 md:pt-24 pb-16 md:pb-24">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Vad vi inventerar och värderar
+          </h2>
+          {/* TODO: Beskriv vilka kategorier av föremål ni tittar på och hur ni bedömer dem */}
 
-                <h2>Så går en värdering till</h2>
-                {/* TODO: Beskriv processen steg för steg — hur ni dokumenterar, hur ni kommunicerar med familjen */}
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
+            Så går en värdering till
+          </h2>
+          {/* TODO: Beskriv processen steg för steg — hur ni dokumenterar, hur ni kommunicerar med familjen */}
 
-                <h2>Uppköp direkt på plats</h2>
-                {/* TODO: Förklara hur uppköpsprocessen fungerar — hur ni sätter pris, hur betalning sker */}
-                <p>
-                  Föremål vi inte köper upp direkt kan vi sälja vidare åt dig — läs mer under{' '}
-                  <Link href={`/tjanster/dodsbotomning#${vadHanderMedSakernaId}`}>
-                    Vad händer med sakerna?
-                  </Link>{' '}
-                  på sidan om dödsbotömning.
-                </p>
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
+            Uppköp direkt på plats
+          </h2>
+          {/* TODO: Förklara hur uppköpsprocessen fungerar — hur ni sätter pris, hur betalning sker */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Föremål vi inte köper upp direkt kan vi sälja vidare åt dig — läs mer under{' '}
+            <Link href={`/tjanster/dodsbotomning#${vadHanderMedSakernaId}`} className="text-brand-700 underline hover:text-brand-800">
+              Vad händer med sakerna?
+            </Link>{' '}
+            på sidan om dödsbotömning.
+          </p>
 
-                <h2>När vi inte kan värdera</h2>
-                {/* TODO: Var ärlig om gränserna för er kompetens och hur ni hjälper vidare */}
-              </div>
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
+            När vi inte kan värdera
+          </h2>
+          {/* TODO: Var ärlig om gränserna för er kompetens och hur ni hjälper vidare */}
+        </div>
 
-              <div className="mt-10 border-t border-stone-200 pt-10">
-                <h2 className="text-xl font-semibold mb-6">Vanliga frågor om värdering</h2>
-                <div className="divide-y divide-stone-200">
-                  {faqs.map(f => (
-                    <FaqItem key={f.question} question={f.question} answer={f.answer} />
-                  ))}
-                </div>
-              </div>
-            </div>
+        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
+          <p className="text-sm text-stone-400 italic">Bildplats — foto från en värderingssituation tillkommer</p>
+        </div>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24 bg-stone-50 rounded-2xl p-6">
-                <h2 className="text-lg font-semibold mb-2">Kostnadsfri bedömning</h2>
-                <p className="text-stone-500 text-sm mb-5">
-                  Vi besiktar och lämnar offert utan kostnad eller förbindelser.
-                </p>
-                <ContactForm />
-              </div>
-            </aside>
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
+          <h2 className="text-xl font-semibold text-stone-900 mb-6">Vanliga frågor om värdering</h2>
+          <div className="divide-y divide-stone-200">
+            {faqs.map(f => (
+              <FaqItem key={f.question} question={f.question} answer={f.answer} />
+            ))}
           </div>
         </div>
-      </section>
+
+        <div className="pb-20 md:pb-28">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
+            Kostnadsfri bedömning
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Vi besiktar och lämnar offert utan kostnad eller förbindelser.
+          </p>
+          <div className="max-w-xl">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
 
       <section className="section bg-stone-50">
         <div className="container">

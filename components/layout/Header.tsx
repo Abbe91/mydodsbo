@@ -9,31 +9,24 @@ const navLinks = [
   { href: '/om-oss',   label: 'Om oss' },
 ]
 
+// logo.png has no baked-in transparency and no wordmark text of its own —
+// it's the house/heart/hand mark only. Pair it with a plain-text wordmark
+// so the brand name stays legible without relying on a raster image for it.
+// logo-header.png/.webp are pre-generated 128x128 exports of the original
+// public/images/logo.png (1254x1254) — regenerate both if the source logo
+// changes; the header should never ship the full-size original.
 function Logo() {
   return (
-    <svg
-      width="160"
-      height="32"
-      viewBox="0 0 160 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label={company.name}
-      role="img"
-    >
-      {/* Shield / checkmark mark */}
-      <path
-        d="M4 6 L14 2 L24 6 L24 16 C24 22 14 28 14 28 C14 28 4 22 4 16 Z"
-        fill="#1a5472"
+    <picture>
+      <source srcSet="/images/logo-header.webp" type="image/webp" />
+      <img
+        src="/images/logo-header.png"
+        alt={company.name}
+        width={40}
+        height={40}
+        className="h-10 w-10 shrink-0"
       />
-      <path d="M9 15 L13 19 L20 11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      {/* Wordmark */}
-      <text x="30" y="13" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700" fill="#1a5472" letterSpacing="0.5">
-        TRYGG
-      </text>
-      <text x="30" y="26" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="400" fill="#1a5472" letterSpacing="0.5">
-        DÖDSBO
-      </text>
-    </svg>
+    </picture>
   )
 }
 
@@ -42,8 +35,12 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-18">
-          <Link href="/" aria-label={`${company.name} – startsidan`}>
+          <Link href="/" aria-label={`${company.name} – startsidan`} className="flex items-center gap-2.5">
             <Logo />
+            <span className="leading-tight">
+              <span className="block text-sm font-bold text-brand-700 tracking-wide">TRYGG</span>
+              <span className="block text-sm font-medium text-brand-700 tracking-wide -mt-0.5">DÖDSBO</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}

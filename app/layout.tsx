@@ -44,6 +44,10 @@ export const metadata: Metadata = {
   },
   description:
     'Vi hjälper dig tömma och städa dödsbon i Göteborg med omsorg och respekt. Kontakta oss för en kostnadsfri bedömning.',
+  icons: {
+    icon:  '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type:      'website',
     locale:    'sv_SE',

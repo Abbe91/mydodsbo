@@ -6,6 +6,7 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
 import { VadHanderMedSakerna } from '@/components/content/VadHanderMedSakerna'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Dödsbotömning i Göteborg',
@@ -54,60 +55,92 @@ export default function DodsbotomningPage() {
         </div>
       </div>
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">Dödsbotömning i Göteborg</h1>
+      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
+        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+          Tjänster
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
+          Dödsbotömning i Göteborg
+        </h1>
+        <a
+          href={`tel:${company.phoneTel}`}
+          className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
+        >
+          Ring oss direkt: {company.phone}
+        </a>
+      </div>
 
-              {/* TODO: Skriv din personliga ingress om varför ni startade och vad som driver er */}
+      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
+        <p className="text-sm text-stone-400 italic">Bildplats — foto från en tömning tillkommer</p>
+      </div>
 
-              <div className="prose-content">
-                <h2>Vad ingår i en dödsbotömning?</h2>
-                {/* TODO: Beskriv exakt vad ni gör steg för steg — var specifik och ärlig */}
+      <div className="container">
+        <div className="pt-16 md:pt-24 pb-16 md:pb-24">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Vad ingår i en dödsbotömning?
+          </h2>
+          {/* TODO: Beskriv exakt vad ni gör steg för steg — var specifik och ärlig */}
 
-                <h2>Så går en dödsbotömning till</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-6">
+            Så går en dödsbotömning till
+          </h2>
 
-                <h3>1. Inventering och genomgång</h3>
-                {/* TODO: Beskriv hur ni börjar varje uppdrag — vad ni tittar på, vad ni frågar */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
+            1. Inventering och genomgång
+          </h3>
+          {/* TODO: Beskriv hur ni börjar varje uppdrag — vad ni tittar på, vad ni frågar */}
 
-                <h3>2. Hantering av värdesaker</h3>
-                {/* TODO: Beskriv hur ni identifierar och hanterar värdesaker */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            2. Hantering av värdesaker
+          </h3>
+          {/* TODO: Beskriv hur ni identifierar och hanterar värdesaker */}
 
-                <h3>3. Bortforsling</h3>
-                {/* TODO: Beskriv hur bortforsling går till och var ni lämnar gods */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            3. Bortforsling
+          </h3>
+          {/* TODO: Beskriv hur bortforsling går till och var ni lämnar gods */}
 
-                <VadHanderMedSakerna />
+          <div className="mt-12">
+            <VadHanderMedSakerna />
+          </div>
 
-                <h2>Vad påverkar priset?</h2>
-                {/* TODO: Skriv ärligt om vilka faktorer som påverkar priset — utan att locka med påhittade rabatter */}
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
+            Vad påverkar priset?
+          </h2>
+          {/* TODO: Skriv ärligt om vilka faktorer som påverkar priset — utan att locka med påhittade rabatter */}
 
-                <h2>Varför anlita oss?</h2>
-                {/* TODO: Skriv med dina egna ord — inte generiska säljfraser */}
-              </div>
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
+            Varför anlita oss?
+          </h2>
+          {/* TODO: Skriv med dina egna ord — inte generiska säljfraser */}
+        </div>
 
-              <div className="mt-10 border-t border-stone-200 pt-10">
-                <h2 className="text-xl font-semibold mb-6">Vanliga frågor om dödsbotömning</h2>
-                <div className="divide-y divide-stone-200">
-                  {faqs.map(f => (
-                    <FaqItem key={f.question} question={f.question} answer={f.answer} />
-                  ))}
-                </div>
-              </div>
-            </div>
+        {/* Contained image slot — second photo goes here later */}
+        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
+          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett tömningsuppdrag tillkommer</p>
+        </div>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24 bg-stone-50 rounded-2xl p-6">
-                <h2 className="text-lg font-semibold mb-2">Kostnadsfri bedömning</h2>
-                <p className="text-stone-500 text-sm mb-5">
-                  Vi besiktar och lämnar offert utan kostnad eller förbindelser.
-                </p>
-                <ContactForm />
-              </div>
-            </aside>
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
+          <h2 className="text-xl font-semibold text-stone-900 mb-6">Vanliga frågor om dödsbotömning</h2>
+          <div className="divide-y divide-stone-200">
+            {faqs.map(f => (
+              <FaqItem key={f.question} question={f.question} answer={f.answer} />
+            ))}
           </div>
         </div>
-      </section>
+
+        <div className="pb-20 md:pb-28">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
+            Kostnadsfri bedömning
+          </h2>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
+            Vi besiktar och lämnar offert utan kostnad eller förbindelser.
+          </p>
+          <div className="max-w-xl">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
 
       <section className="section bg-stone-50">
         <div className="container">
