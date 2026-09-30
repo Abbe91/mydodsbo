@@ -61,8 +61,17 @@ export default function IntegritetspolicyPage() {
             <ul>
               <li>Namn</li>
               <li>Telefonnummer</li>
+              <li>E-post (frivilligt)</li>
+              <li>Adress (frivilligt)</li>
+              <li>Postnummer (frivilligt)</li>
               <li>Stad eller stadsdel (frivilligt)</li>
-              <li>Meddelande</li>
+              <li>Bostadstyp (frivilligt)</li>
+              <li>Antal rum (frivilligt)</li>
+              <li>Hiss (frivilligt)</li>
+              <li>Våningsplan (frivilligt)</li>
+              <li>Vilka tjänster du behöver hjälp med (frivilligt)</li>
+              <li>Önskat datum (frivilligt)</li>
+              <li>Meddelande (frivilligt)</li>
             </ul>
             <p>
               <strong>Ändamål:</strong> Att besvara din förfrågan och ge dig en
