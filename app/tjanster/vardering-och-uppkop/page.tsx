@@ -5,7 +5,6 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
-import { vadHanderMedSakernaId } from '@/content/vad-hander-med-sakerna'
 import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
@@ -90,31 +89,47 @@ export default function VarderingPage() {
       <div className="container">
         <div className="pt-16 md:pt-24 pb-16 md:pb-24">
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
-            Vad vi inventerar och värderar
+            Värdering och uppköp
           </h2>
-          {/* TODO: Beskriv vilka kategorier av föremål ni tittar på och hur ni bedömer dem */}
 
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            Så går en värdering till
-          </h2>
-          {/* TODO: Beskriv processen steg för steg — hur ni dokumenterar, hur ni kommunicerar med familjen */}
-
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            Uppköp direkt på plats
-          </h2>
-          {/* TODO: Förklara hur uppköpsprocessen fungerar — hur ni sätter pris, hur betalning sker */}
-          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
-            Föremål vi inte köper upp direkt kan vi sälja vidare åt dig — läs mer under{' '}
-            <Link href={`/tjanster/dodsbotomning#${vadHanderMedSakernaId}`} className="text-brand-700 underline hover:text-brand-800">
-              Vad händer med sakerna?
-            </Link>{' '}
-            på sidan om dödsbotömning.
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Vem som gör värderingen
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Värderingen görs av en av våra medarbetare som har arbetat med värdering i över
+            tjugo år. Han driver också en egen antikaffär och har sålt via Tradera under
+            lång tid. Det betyder att bedömningen görs av någon som faktiskt vet vad saker
+            säljs för, inte av en gissning på plats.
           </p>
 
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            När vi inte kan värdera
-          </h2>
-          {/* TODO: Var ärlig om gränserna för er kompetens och hur ni hjälper vidare */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Vad vi värderar
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Vi går igenom hela bohaget och tittar på allt som kan ha ett ekonomiskt värde:
+            möbler, antikviteter, konst, mattor, porslin, silver, smycken, klockor och
+            samlarföremål. Är du osäker på om något är värt något behöver du inte sortera
+            i förväg — vi tittar på allt.
+          </p>
+
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            När vi behöver en andra bedömning
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Är ett föremål svårbedömt eller kan vara värt mycket tar vi in en bedömning
+            från auktionshus innan vi sätter ett värde. Vi gissar hellre inte än att du får
+            för lite betalt.
+          </p>
+
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Hur uppköpet går till
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Vill du sälja direkt köper vi föremålen av dig och betalar ut summan.
+            Alternativt räknas värdet av mot kostnaden för arbetet, så att du får en lägre
+            faktura. Vilket som passar bäst beror på situationen, och du bestämmer — vad
+            som gäller står i offerten innan du skriver under.
+          </p>
         </div>
 
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">

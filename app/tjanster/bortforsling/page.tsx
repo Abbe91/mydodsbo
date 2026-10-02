@@ -5,7 +5,6 @@ import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
-import { VadHanderMedSakerna } from '@/components/content/VadHanderMedSakerna'
 import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
@@ -90,24 +89,50 @@ export default function BortforslingPage() {
       <div className="container">
         <div className="pt-16 md:pt-24 pb-16 md:pb-24">
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
-            Hur vi hanterar bortforsling
+            Bortforsling och återvinning
           </h2>
-          {/* TODO: Beskriv er process — hur ni sorterar, väljer mottagare, dokumenterar */}
 
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            Återbruk och återvinning
-          </h2>
-          <VadHanderMedSakerna only={['skanka', 'kassera']} hideHeading />
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Vi tar hand om hela bohaget
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Vi tömmer och forslar bort allt som ska ut ur bostaden — möbler, husgeråd,
+            vitvaror, kartonger och det som står kvar i förråd, källare och på vinden.
+            Du behöver inte sortera eller bära ut något själv innan vi kommer.
+          </p>
 
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            Transport och fordon
-          </h2>
-          {/* TODO: Beskriv er fordonsflotta och hur ni hanterar transport praktiskt */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Fordon och bemanning
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Vi har både lastbil och skåpbil och väljer fordon efter hur mycket som ska ut
+            och hur bostaden ligger till. Vi kör alltid inom tillåten lastvikt.
+          </p>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Hur många vi är beror på uppdraget. En mindre bostad klarar vi med tre
+            personer, och vid större uppdrag är vi upp till sex. Det gör att vi oftast blir
+            klara på en till två dagar.
+          </p>
 
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
-            Dokumentation
-          </h2>
-          {/* TODO: Beskriv om/hur ni dokumenterar vart gods tagit vägen */}
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Farligt avfall
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Färg, lösningsmedel, kemikalier och batterier räknas som farligt avfall och
+            har egna regler för transport och hantering. Vi lämnar sådant på rätt
+            mottagningsstation — du behöver inte ta hand om det själv, men vi går igenom
+            det med dig innan så att du vet vad som gäller.
+          </p>
+
+          <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
+            Dokumentation om du vill ha det
+          </h3>
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+            Vill du ha dokumentation på vad som forslats bort och var det lämnats ordnar vi
+            det. Säg till innan vi skriver avtalet så lägger vi in det i uppdraget. Det är
+            vanligt när anhöriga bor på annan ort eller utomlands och inte kan vara på
+            plats.
+          </p>
         </div>
 
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
