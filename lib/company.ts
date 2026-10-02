@@ -2,21 +2,22 @@
 // Replace every placeholder value before setting SITE_LAUNCHED=true —
 // the prebuild script will fail the build if any XXX remains.
 
-// Legal form suffix (e.g. 'AB', 'Enskild firma', 'HB') — leave empty until
-// the actual registered company form is confirmed. Do not add "AB" unless
-// the business is actually registered as an aktiebolag.
-// ▶ TODO: set to the real registered legal form before launch.
+// Enskild firma — intentionally empty. Never add "AB" anywhere on the site.
 const legalForm = '' as string
 
 export const company = {
   name:      'Trygg Dödsbo',
   legalForm,
   legalName: legalForm ? `Trygg Dödsbo ${legalForm}` : 'Trygg Dödsbo',
-  orgNr:     'XXXXXX-XXXX',
+  fSkatt:    true,
+
+  // orgNr intentionally empty. For an enskild firma the org.nr is the owner's
+  // personal identity number — must never be published on the site.
+  orgNr:     '' as string,
 
   address: {
-    street: 'Gatunamn XXX',
-    zip:    'XXX XX',
+    street: '' as string, // not published — confirm with owner before adding
+    zip:    '' as string, // not published
     city:   'Göteborg',
   },
 

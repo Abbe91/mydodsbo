@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
@@ -70,9 +71,17 @@ export default function DodsbostadningPage() {
         </a>
       </div>
 
-      {/* Full-bleed image slot — hero photo goes here later */}
-      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
-        <p className="text-sm text-stone-400 italic">Bildplats — foto från en städad bostad tillkommer</p>
+      {/* Before / after slider */}
+      <div className="container pb-10 md:pb-14">
+        <p className="text-sm text-stone-500 mb-3">Dra i linjen för att se skillnaden</p>
+        <BeforeAfterSlider
+          beforeSrc="/images/stadning-innan.webp"
+          afterSrc="/images/stadning-efter.webp"
+          beforeAlt="Dödsbo innan städning"
+          afterAlt="Dödsbo efter städning"
+          beforeLabel="Innan städning"
+          afterLabel="Efter städning"
+        />
       </div>
 
       <div className="container">
@@ -100,11 +109,6 @@ export default function DodsbostadningPage() {
             och gör om det som behöver göras. Du ska inte behöva betala för en städning som
             inte höll.
           </p>
-        </div>
-
-        {/* Contained image slot — second photo goes here later */}
-        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
-          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett städuppdrag tillkommer</p>
         </div>
 
         <div className="mb-16 md:mb-24">

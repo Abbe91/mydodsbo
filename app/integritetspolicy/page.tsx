@@ -40,8 +40,7 @@ export default function IntegritetspolicyPage() {
             <h2>Personuppgiftsansvarig</h2>
             <p>
               {company.legalName}<br />
-              Organisationsnummer: {company.orgNr}<br />
-              {company.address.street}, {company.address.zip} {company.address.city}<br />
+              {company.address.city}<br />
               E-post: <a href={`mailto:${company.email}`}>{company.email}</a><br />
               Telefon: <a href={`tel:${company.phoneTel}`}>{company.phone}</a>
             </p>

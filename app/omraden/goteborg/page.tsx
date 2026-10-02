@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { ContactForm } from '@/components/forms/ContactForm'
@@ -54,9 +55,14 @@ export default function GoteborgPage() {
         </a>
       </div>
 
-      {/* Full-bleed image slot — hero photo goes here later */}
-      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
-        <p className="text-sm text-stone-400 italic">Bildplats — foto från Göteborg tillkommer</p>
+      <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
+        <Image
+          src="/images/uppdrag-dödsbo-göteborg.webp"
+          alt="Dödsbouppdrag i Göteborg – Trygg Dödsbo"
+          fill
+          className="object-cover object-center"
+          priority
+        />
       </div>
 
       <div className="container">
@@ -98,9 +104,13 @@ export default function GoteborgPage() {
           </p>
         </div>
 
-        {/* Contained image slot — second photo goes here later */}
-        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
-          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett uppdrag tillkommer</p>
+        <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
+          <Image
+            src="/images/dödsbo-trygg.webp"
+            alt="Trygg Dödsbo – dödsbohantering i Göteborg"
+            fill
+            className="object-cover object-center"
+          />
         </div>
 
         {/* Stadsdelar — quiet, plain text, no pills */}

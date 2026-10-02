@@ -1,24 +1,22 @@
 import type { MetadataRoute } from 'next'
 import { company } from '@/lib/company'
-
-export const dynamic = 'force-static'
-// Note: public/__forms.html (Netlify Forms detection stub) is intentionally
-// never listed here — see also its disallow entry in app/robots.ts.
 import { uppdrag } from '@/content/uppdrag'
 import { guides } from '@/content/guides'
 
+export const dynamic = 'force-static'
+
+// /tack      — form-redirect page, always noindex, never in sitemap
+// /cookies   — populated by CookieYes at runtime, no SEO value
+// robots.ts  — disallows all crawlers until SITE_LAUNCHED=true (separate concern)
+
 const base = company.siteUrl
 
-type SitemapEntry = MetadataRoute.Sitemap[number]
+type Entry = MetadataRoute.Sitemap[number]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (process.env.SITE_LAUNCHED !== 'true') {
-    return []
-  }
-
   const now = new Date()
 
-  const staticPages: SitemapEntry[] = [
+  const staticPages: Entry[] = [
     { url: base,                                     priority: 1.0,  changeFrequency: 'weekly',  lastModified: now },
     { url: `${base}/tjanster`,                       priority: 0.9,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/tjanster/dodsbotomning`,         priority: 0.9,  changeFrequency: 'monthly', lastModified: now },
@@ -30,16 +28,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/uppdrag`,                        priority: 0.7,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/om-oss`,                         priority: 0.6,  changeFrequency: 'yearly',  lastModified: now },
     { url: `${base}/kontakt`,                        priority: 0.8,  changeFrequency: 'yearly',  lastModified: now },
+    { url: `${base}/integritetspolicy`,              priority: 0.3,  changeFrequency: 'yearly',  lastModified: now },
   ]
 
-  const uppdragPages: SitemapEntry[] = uppdrag.map(u => ({
+  const uppdragPages: Entry[] = uppdrag.map(u => ({
     url:             `${base}/uppdrag/${u.slug}`,
     lastModified:    new Date(u.completedDate),
     changeFrequency: 'never' as const,
     priority:        0.5,
   }))
 
-  const guidePages: SitemapEntry[] = guides.map(g => ({
+  const guidePages: Entry[] = guides.map(g => ({
     url:             `${base}/guide/${g.slug}`,
     lastModified:    new Date(g.publishedDate),
     changeFrequency: 'monthly' as const,

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { company } from '@/lib/company'
 
 export const metadata: Metadata = {
   title:       'Om oss – Trygg Dödsbo',
@@ -123,7 +124,13 @@ export default function OmOssPage() {
             </p>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 border-t border-stone-200 pt-6 text-sm text-stone-500 space-y-0.5">
+            <p>{company.name} · Enskild firma</p>
+            <p>{company.address.city}</p>
+            <p>Godkänd för F-skatt</p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-4">
             <Link
               href="/kontakt"
               className="inline-block bg-warm-600 hover:bg-warm-700 text-white font-medium px-6 py-3 rounded-lg transition-colors"

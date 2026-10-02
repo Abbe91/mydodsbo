@@ -28,18 +28,25 @@ const COMPANY_CHECKS = [
   { re: /XXX/,              label: 'XXX placeholder' },
   { re: /0{4}/,             label: '0000 placeholder' },
   { re: /1234567/,          label: '1234567 placeholder' },
-  { re: /['"]\s*['"]/,      label: 'empty string value' },
   { re: /Exempel/i,         label: '"Exempel" placeholder' },
   { re: /'example'|"example"/i, label: '"example" placeholder' },
   { re: /'placeholder'|"placeholder"/i, label: '"placeholder" placeholder' },
+  // orgNr must always stay empty — it equals the owner's personal identity
+  // number for an enskild firma and must never be published.
+  { re: /orgNr:\s*'[^']+'/,  label: 'company.ts: orgNr has a value — must remain empty (personal identity number)' },
 ]
 
-// Consent/analytics IDs are safety-critical: GTM must never ship without
-// CookieYes wired up (see app/layout.tsx guard), so both must be explicitly
-// non-empty and non-placeholder before launch, not just "not obviously XXX".
+// Fields that must be non-empty and non-placeholder before launch.
+// phone/email/address are required for contact and legal purposes.
+// gtmId/cookieYesId are safety-critical: GTM must never ship without CookieYes.
+// orgNr is intentionally excluded — it must stay empty (see above).
 const REQUIRED_COMPANY_FIELDS = [
-  { field: 'gtmId',       re: /gtmId:\s*'([^']*)'/ },
-  { field: 'cookieYesId', re: /cookieYesId:\s*'([^']*)'/ },
+  { field: 'gtmId',          re: /gtmId:\s*'([^']*)'/ },
+  { field: 'cookieYesId',    re: /cookieYesId:\s*'([^']*)'/ },
+  { field: 'phone',          re: /\bphone:\s*'([^']*)'/ },
+  { field: 'phoneTel',       re: /phoneTel:\s*'([^']*)'/ },
+  { field: 'email',          re: /\bemail:\s*'([^']*)'/ },
+  { field: 'address.city',   re: /city:\s*'([^']*)'/ },
 ]
 const PLACEHOLDER_VALUE_RE = /XXX|example|placeholder|0{4}|1234567/i
 

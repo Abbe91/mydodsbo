@@ -32,9 +32,8 @@ export function Footer() {
           <div className="md:col-span-1">
             <p className="text-white font-semibold text-lg mb-1">{company.name}</p>
             <p className="text-sm text-stone-400 mb-4">{company.serviceArea}</p>
-            <p className="text-sm">Org.nr: {company.orgNr}</p>
-            <p className="text-sm mt-1">{company.address.street}</p>
-            <p className="text-sm">{company.address.zip} {company.address.city}</p>
+            <p className="text-sm">Godkänd för F-skatt</p>
+            <p className="text-sm mt-1">{company.address.city}</p>
           </div>
 
           {/* Services */}

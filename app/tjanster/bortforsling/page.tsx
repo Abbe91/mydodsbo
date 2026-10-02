@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { FaqItem } from '@/components/ui/FaqItem'
@@ -70,8 +71,14 @@ export default function BortforslingPage() {
         </a>
       </div>
 
-      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
-        <p className="text-sm text-stone-400 italic">Bildplats — foto från en bortforsling tillkommer</p>
+      <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
+        <Image
+          src="/images/bortforsling-dodsbo.webp"
+          alt="Bortforsling av dödsbo i Göteborg"
+          fill
+          className="object-cover object-center"
+          priority
+        />
       </div>
 
       <div className="container">
@@ -97,8 +104,13 @@ export default function BortforslingPage() {
           {/* TODO: Beskriv om/hur ni dokumenterar vart gods tagit vägen */}
         </div>
 
-        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
-          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett bortforslingsuppdrag tillkommer</p>
+        <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
+          <Image
+            src="/images/bortforsling-dodsbo.webp"
+            alt="Bortforsling av dödsbo i Göteborg"
+            fill
+            className="object-cover object-center"
+          />
         </div>
 
         <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
