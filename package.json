@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev.mjs",
     "prebuild": "node scripts/check-todos.mjs",
     "build": "node scripts/build.mjs",
     "postbuild": "node scripts/postbuild.mjs",

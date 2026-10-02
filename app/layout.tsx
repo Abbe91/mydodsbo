@@ -13,6 +13,7 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
 })
 
 const isLaunched = process.env.SITE_LAUNCHED === 'true'

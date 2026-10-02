@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
@@ -76,40 +77,99 @@ const faqs = [
 export default function HomePage() {
   return (
     <>
+      <link rel="preload" as="image" href="/images/hero-team-at-work.webp" fetchPriority="high" />
       <FaqPageJsonLd faqs={faqs} />
 
-      {/* Intro — eyebrow is the one accent moment on this page */}
-      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
-        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
-          Trygg Dödsbo
-        </p>
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
-          Dödsbotömning &amp; städning i Göteborg
-        </h1>
-        <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-md md:max-w-lg mb-8">
-          Vi tar hand om hela processen med omsorg och respekt — tömning, värdering,
-          bortforsling och städning. Du slipper tänka på det praktiska.
-        </p>
-        <div className="flex flex-wrap items-center gap-6">
-          <Link
-            href="/kontakt"
-            className="inline-block bg-warm-600 hover:bg-warm-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-          >
-            Kostnadsfri bedömning
-          </Link>
-          <a
-            href={`tel:${company.phoneTel}`}
-            className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
-          >
-            Ring oss direkt: {company.phone}
-          </a>
-        </div>
-      </div>
+      {/* ── Hero ──────────────────────────────────────────────────────────
+          Two-column: left = content card (solid bg, full WCAG AA contrast),
+          right = full-bleed team photo. Mobile: card above, image below.
+         ──────────────────────────────────────────────────────────────── */}
+      <section className="overflow-hidden border-b border-stone-100">
+        <div className="flex flex-col md:grid md:grid-cols-[55%_45%] md:min-h-[580px] lg:min-h-[640px]">
 
-      {/* Full-bleed image slot — hero photo goes here later */}
-      <div className="w-full aspect-[21/9] md:aspect-[3/1] border-y border-dashed border-stone-300 bg-stone-100 flex items-center justify-center">
-        <p className="text-sm text-stone-400 italic">Bildplats — foto tillkommer</p>
-      </div>
+          {/* Content card — white background guarantees contrast over any photo */}
+          <div className="bg-white flex items-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-14 md:py-0">
+            <div className="w-full">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+                Trygg Dödsbo
+              </p>
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] mb-6 max-w-xl">
+                Dödsbotömning &amp; städning i Göteborg
+              </h1>
+              <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-8 max-w-xl">
+                Vi tar hand om hela processen med omsorg och respekt — tömning, värdering,
+                bortforsling och städning. Du slipper tänka på det praktiska.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-7 max-w-xl">
+                <Link
+                  href="/kontakt"
+                  className="w-full sm:w-auto bg-warm-600 hover:bg-warm-700 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+                >
+                  Kostnadsfri bedömning
+                </Link>
+                <a
+                  href={`tel:${company.phoneTel}`}
+                  className="w-full sm:w-auto border border-stone-300 hover:border-brand-700 text-stone-700 hover:text-brand-700 font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+                >
+                  Ring oss
+                </a>
+              </div>
+
+              <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+                {[
+                  'Kostnadsfritt hembesök',
+                  'Fast pris efter hembesök',
+                  'Betalning efter utfört arbete',
+                ].map(point => (
+                  <li key={point} className="flex items-center gap-2 text-sm text-stone-600">
+                    <svg
+                      className="w-4 h-4 shrink-0 text-warm-600"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/*
+            PHOTO SLOT — swap this <div> for the snippet below once the photo is ready:
+
+              import Image from 'next/image'
+
+              <div className="relative">
+                <Image
+                  src="/images/hero-team-at-work.jpg"
+                  alt="Trygg Dödsbo team i arbete på ett dödsbo"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
+
+            Expected file : /public/images/hero-team-at-work.jpg
+            Dimensions    : 1080 × 1280 px  (portrait — fills the right column)
+          */}
+          <div className="relative min-h-[260px] md:min-h-0">
+            <Image
+              src="/images/hero-team-at-work.webp"
+              alt="Trygg Dödsbo team i arbete på ett dödsbo"
+              fill
+              sizes="(max-width: 768px) 100vw, 45vw"
+              quality={72}
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+
+        </div>
+      </section>
 
       <div className="container">
         {/* Vad vi gör */}
@@ -141,9 +201,16 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Contained image slot — second photo goes here later */}
-        <div className="max-w-3xl aspect-video border border-dashed border-stone-300 bg-stone-100 flex items-center justify-center mb-16 md:mb-24">
-          <p className="text-sm text-stone-400 italic">Bildplats — foto från ett uppdrag tillkommer</p>
+        {/* Uppdrag Göteborg image */}
+        <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
+          <Image
+            src="/images/uppdrag-dödsbo-göteborg.webp"
+            alt="Uppdrag dödsbotömning i Göteborg"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            quality={72}
+            className="object-cover object-center"
+          />
         </div>
 
         {/* How it works */}
