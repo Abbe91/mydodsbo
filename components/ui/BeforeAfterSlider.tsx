@@ -1,15 +1,18 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
-import Image from 'next/image'
 
 interface Props {
-  beforeSrc:    string
-  afterSrc:     string
-  beforeAlt:    string
-  afterAlt:     string
-  beforeLabel?: string
-  afterLabel?:  string
+  beforeSrc:      string
+  afterSrc:       string
+  beforeAlt:      string
+  afterAlt:       string
+  beforeLabel?:   string
+  afterLabel?:    string
+  beforeAvifSrc?: string
+  afterAvifSrc?:  string
+  beforeWebpSrc?: string
+  afterWebpSrc?:  string
 }
 
 export function BeforeAfterSlider({
@@ -17,8 +20,12 @@ export function BeforeAfterSlider({
   afterSrc,
   beforeAlt,
   afterAlt,
-  beforeLabel = 'Innan',
-  afterLabel  = 'Efter',
+  beforeLabel   = 'Innan',
+  afterLabel    = 'Efter',
+  beforeAvifSrc,
+  afterAvifSrc,
+  beforeWebpSrc,
+  afterWebpSrc,
 }: Props) {
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -43,26 +50,38 @@ export function BeforeAfterSlider({
       onTouchMove={(e) => { e.preventDefault(); move(e.touches[0].clientX) }}
     >
       {/* After (clean) image — base layer, always full width */}
-      <Image
-        src={afterSrc}
-        alt={afterAlt}
-        fill
-        className="object-cover"
-        draggable={false}
-      />
+      <picture>
+        {afterAvifSrc && <source type="image/avif" srcSet={afterAvifSrc} />}
+        {afterWebpSrc && <source type="image/webp" srcSet={afterWebpSrc} />}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={afterSrc}
+          alt={afterAlt}
+          draggable={false}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
 
       {/* Before (dirty) image — clipped to left of the divider via clip-path */}
       <div
         className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image
-          src={beforeSrc}
-          alt={beforeAlt}
-          fill
-          className="object-cover"
-          draggable={false}
-        />
+        <picture>
+          {beforeAvifSrc && <source type="image/avif" srcSet={beforeAvifSrc} />}
+          {beforeWebpSrc && <source type="image/webp" srcSet={beforeWebpSrc} />}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={beforeSrc}
+            alt={beforeAlt}
+            draggable={false}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
       </div>
 
       {/* Divider line */}

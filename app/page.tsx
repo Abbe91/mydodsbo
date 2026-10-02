@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
+import { preload } from 'react-dom'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
@@ -75,9 +75,18 @@ const faqs = [
 ]
 
 export default function HomePage() {
+  // Hoist the hero AVIF preload into <head> via React 19's preload API.
+  // This fires before the body is parsed so the LCP image starts fetching
+  // as early as possible with high priority.
+  preload('/images/hero-430w.avif', {
+    as: 'image',
+    fetchPriority: 'high',
+    imageSrcSet: '/images/hero-430w.avif 430w, /images/hero-860w.avif 860w',
+    imageSizes: '(max-width: 768px) 100vw, 45vw',
+  })
+
   return (
     <>
-      <link rel="preload" as="image" href="/images/hero-team-at-work.webp" fetchPriority="high" />
       <FaqPageJsonLd faqs={faqs} />
 
       {/* ── Hero ──────────────────────────────────────────────────────────
@@ -138,34 +147,30 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/*
-            PHOTO SLOT — swap this <div> for the snippet below once the photo is ready:
-
-              import Image from 'next/image'
-
-              <div className="relative">
-                <Image
-                  src="/images/hero-team-at-work.jpg"
-                  alt="Trygg Dödsbo team i arbete på ett dödsbo"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
-
-            Expected file : /public/images/hero-team-at-work.jpg
-            Dimensions    : 1080 × 1280 px  (portrait — fills the right column)
-          */}
+          {/* fill-image pattern: parent is relative, img is absolute inset-0 */}
           <div className="relative min-h-[260px] md:min-h-0">
-            <Image
-              src="/images/hero-team-at-work.webp"
-              alt="Trygg Dödsbo team i arbete på ett dödsbo"
-              fill
-              sizes="(max-width: 768px) 100vw, 45vw"
-              quality={72}
-              className="object-cover object-center"
-              priority
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet="/images/hero-430w.avif 430w, /images/hero-860w.avif 860w"
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+              <source
+                type="image/webp"
+                srcSet="/images/hero-430w.webp 430w, /images/hero-860w.webp 860w"
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/hero-860w.jpg"
+                alt="Trygg Dödsbo team i arbete på ett dödsbo"
+                width={860}
+                height={645}
+                fetchPriority="high"
+                decoding="sync"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </picture>
           </div>
 
         </div>
@@ -203,14 +208,20 @@ export default function HomePage() {
 
         {/* Uppdrag Göteborg image */}
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
-          <Image
-            src="/images/uppdrag-dödsbo-göteborg.webp"
-            alt="Uppdrag dödsbotömning i Göteborg"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            quality={72}
-            className="object-cover object-center"
-          />
+          <picture>
+            <source type="image/avif" srcSet="/images/uppdrag-768w.avif" sizes="(max-width: 768px) 100vw, 768px" />
+            <source type="image/webp" srcSet="/images/uppdrag-768w.webp" sizes="(max-width: 768px) 100vw, 768px" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/uppdrag-768w.jpg"
+              alt="Uppdrag dödsbotömning i Göteborg"
+              width={768}
+              height={1152}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </picture>
         </div>
 
         {/* How it works */}

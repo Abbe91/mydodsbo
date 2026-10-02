@@ -75,8 +75,12 @@ export default function DodsbostadningPage() {
       <div className="container pb-10 md:pb-14">
         <p className="text-sm text-stone-500 mb-3">Dra i linjen för att se skillnaden</p>
         <BeforeAfterSlider
-          beforeSrc="/images/stadning-innan.webp"
-          afterSrc="/images/stadning-efter.webp"
+          beforeSrc="/images/stadning-innan-768w.webp"
+          afterSrc="/images/stadning-efter-768w.webp"
+          beforeAvifSrc="/images/stadning-innan-768w.avif"
+          afterAvifSrc="/images/stadning-efter-768w.avif"
+          beforeWebpSrc="/images/stadning-innan-768w.webp"
+          afterWebpSrc="/images/stadning-efter-768w.webp"
           beforeAlt="Dödsbo innan städning"
           afterAlt="Dödsbo efter städning"
           beforeLabel="Innan städning"

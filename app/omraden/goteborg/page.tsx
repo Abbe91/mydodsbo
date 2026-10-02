@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { ContactForm } from '@/components/forms/ContactForm'
@@ -56,13 +55,20 @@ export default function GoteborgPage() {
       </div>
 
       <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
-        <Image
-          src="/images/uppdrag-dödsbo-göteborg.webp"
-          alt="Dödsbouppdrag i Göteborg – Trygg Dödsbo"
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        <picture>
+          <source type="image/avif" srcSet="/images/uppdrag-768w.avif" />
+          <source type="image/webp" srcSet="/images/uppdrag-768w.webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/uppdrag-768w.jpg"
+            alt="Dödsbouppdrag i Göteborg – Trygg Dödsbo"
+            width={768}
+            height={1152}
+            fetchPriority="high"
+            decoding="sync"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </picture>
       </div>
 
       <div className="container">
@@ -105,12 +111,20 @@ export default function GoteborgPage() {
         </div>
 
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
-          <Image
-            src="/images/dödsbo-trygg.webp"
-            alt="Trygg Dödsbo – dödsbohantering i Göteborg"
-            fill
-            className="object-cover object-center"
-          />
+          <picture>
+            <source type="image/avif" srcSet="/images/dodsbo-trygg-600w.avif" />
+            <source type="image/webp" srcSet="/images/dodsbo-trygg-600w.webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/dodsbo-trygg-600w.jpg"
+              alt="Trygg Dödsbo – dödsbohantering i Göteborg"
+              width={600}
+              height={450}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </picture>
         </div>
 
         {/* Stadsdelar — quiet, plain text, no pills */}

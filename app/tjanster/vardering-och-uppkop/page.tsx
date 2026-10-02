@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { FaqItem } from '@/components/ui/FaqItem'
@@ -72,13 +71,20 @@ export default function VarderingPage() {
       </div>
 
       <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
-        <Image
-          src="/images/vardering-uppkop.webp"
-          alt="Värdering och uppköp av dödsbo"
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        <picture>
+          <source type="image/avif" srcSet="/images/vardering-600w.avif" />
+          <source type="image/webp" srcSet="/images/vardering-600w.webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/vardering-600w.jpg"
+            alt="Värdering och uppköp av dödsbo"
+            width={600}
+            height={448}
+            fetchPriority="high"
+            decoding="sync"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </picture>
       </div>
 
       <div className="container">
@@ -112,12 +118,20 @@ export default function VarderingPage() {
         </div>
 
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
-          <Image
-            src="/images/vardering-uppkop.webp"
-            alt="Värdering och uppköp av dödsbo"
-            fill
-            className="object-cover object-center"
-          />
+          <picture>
+            <source type="image/avif" srcSet="/images/vardering-600w.avif" />
+            <source type="image/webp" srcSet="/images/vardering-600w.webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/vardering-600w.jpg"
+              alt="Värdering och uppköp av dödsbo"
+              width={600}
+              height={448}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </picture>
         </div>
 
         <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">

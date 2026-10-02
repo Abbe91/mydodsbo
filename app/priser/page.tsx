@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
@@ -71,12 +70,20 @@ export default function PriserPage() {
       </div>
 
       <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
-        <Image
-          src="/images/dödsbo-trygg.webp"
-          alt="Trygg Dödsbo – dödsbotömning i Göteborg"
-          fill
-          className="object-cover object-center"
-        />
+        <picture>
+          <source type="image/avif" srcSet="/images/dodsbo-trygg-600w.avif" />
+          <source type="image/webp" srcSet="/images/dodsbo-trygg-600w.webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/dodsbo-trygg-600w.jpg"
+            alt="Trygg Dödsbo – dödsbotömning i Göteborg"
+            width={600}
+            height={450}
+            fetchPriority="high"
+            decoding="sync"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </picture>
       </div>
 
       <div className="container">

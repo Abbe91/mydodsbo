@@ -1,6 +1,6 @@
 /**
- * Build wrapper: on Windows, applies a trace-file EPERM patch before invoking
- * `next build`. On other platforms, delegates directly to `next build`.
+ * Build wrapper: runs image optimization, then invokes `next build`.
+ * On Windows also applies a trace-file EPERM patch.
  */
 import { spawnSync } from 'child_process'
 import { resolve, dirname, join } from 'path'
@@ -26,6 +26,18 @@ const uppdragIsEmpty = /export const uppdrag:\s*Uppdrag\[\]\s*=\s*\[\s*\]/.test(
 
 if (uppdragIsEmpty && existsSync(uppdragSlugDir)) {
   renameSync(uppdragSlugDir, uppdragSlugBackup)
+}
+
+// ── Step 1: generate optimised image variants ──────────────────────────────
+console.log('build: running image optimisation…')
+const optResult = spawnSync(
+  process.execPath,
+  [join(__dir, 'optimize-images.mjs')],
+  { stdio: 'inherit', cwd: projectRoot }
+)
+if (optResult.status !== 0) {
+  console.error('build: image optimisation failed — aborting')
+  process.exit(optResult.status ?? 1)
 }
 
 // Use relative path with forward slashes to avoid backslash escaping issues
