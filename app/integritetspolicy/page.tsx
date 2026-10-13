@@ -81,24 +81,7 @@ export default function IntegritetspolicyPage() {
               affärsrelation uppstår tillkommer rättslig grund avtal (artikel 6.1 b).
             </p>
 
-            <h3>2.2 Webbanalys (Google Analytics via GTM)</h3>
-            <p>
-              Om du samtycker till analyscookies samlar vi via Google Tag Manager och
-              Google Analytics in teknisk information om ditt besök: vilka sidor du
-              besöker, hur länge, varifrån du kommer och vilken enhet och webbläsare du
-              använder. Din IP-adress anonymiseras.
-            </p>
-            <p>
-              <strong>Ändamål:</strong> Att förstå hur webbplatsen används och förbättra
-              den.
-            </p>
-            <p>
-              <strong>Rättslig grund:</strong> Samtycke (artikel 6.1 a GDPR).
-              Du kan när som helst återkalla ditt samtycke via{' '}
-              <a href="/cookies">cookieinställningarna</a>.
-            </p>
-
-            <h3>2.3 Annonsmätning (Google Ads via GTM)</h3>
+            <h3>2.2 Annonsmätning (Google Ads via GTM)</h3>
             <p>
               Om du samtycker till marknadsföringscookies mäter vi via Google Tag Manager
               och Google Ads hur besökare interagerar med webbplatsen — till exempel om du
@@ -113,7 +96,7 @@ export default function IntegritetspolicyPage() {
               <strong>Rättslig grund:</strong> Samtycke (artikel 6.1 a GDPR).
             </p>
 
-            <h3>2.4 Samtyckeshantering (CookieYes)</h3>
+            <h3>2.3 Samtyckeshantering (CookieYes)</h3>
             <p>
               Vi använder CookieYes som verktyg för att hantera cookiesamtycken. Ditt
               samtyckesval sparas i en cookie i din webbläsare så att du inte behöver
@@ -135,15 +118,13 @@ export default function IntegritetspolicyPage() {
               samlades in för:
             </p>
             <ul>
-              {/* TODO: bekräfta lagringstid för formulärdata i Netlify och uppdatera */}
               <li>
                 <strong>Kontaktformulär (Netlify):</strong>{' '}
-                [TODO: ange lagringstid — t.ex. X månader eller tills du begär radering]
+                12 månader, därefter raderas de.
               </li>
-              {/* TODO: bekräfta lagringstid för Google Analytics-data i GA4-kontot */}
               <li>
-                <strong>Webbanalys (Google Analytics):</strong>{' '}
-                [TODO: ange lagringstid — beror på inställning i GA4-kontot]
+                <strong>Konverteringsdata (Google Ads):</strong>{' '}
+                Sparas i enlighet med inställningarna i Google Ads-kontot.
               </li>
               <li>
                 <strong>Samtyckeslogg (CookieYes):</strong>{' '}
@@ -172,17 +153,16 @@ export default function IntegritetspolicyPage() {
 
             <h3>Google Ireland Ltd / Google LLC (USA)</h3>
             <p>
-              Google behandlar analysdata och konverteringsdata om du har godkänt
-              analys- och marknadsföringscookies. Google är anslutna till EU–U.S.
+              Google behandlar konverteringsdata om du har godkänt
+              marknadsföringscookies. Google är anslutna till EU–U.S.
               Data Privacy Framework och EU-standardavtalsklausuler (SCC) tillämpas.
             </p>
 
             <h3>CookieYes Ltd</h3>
-            {/* TODO: verifiera CookieYes etableringsland, DPA och överföringsmekanism */}
             <p>
               CookieYes tillhandahåller vår samtyckesplattform.
-              [TODO: ange CookieYes etableringsland och bekräfta DPA och eventuell
-              överföringsmekanism]
+              CookieYes Ltd är registrerat i Storbritannien. Överföring
+              sker med stöd av EU-kommissionens adekvansbeslut för Storbritannien.
             </p>
 
             {/* ── 5. Tredjelandsöverföring ── */}

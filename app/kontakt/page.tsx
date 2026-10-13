@@ -89,10 +89,10 @@ export default function KontaktPage() {
           </div>
 
           <div>
-            <dt className="text-xs text-stone-400 uppercase tracking-wide mb-1">Adress</dt>
-            <dd className="text-lg font-medium text-stone-700">
-              {company.address.street}<br />
-              {company.address.zip} {company.address.city}
+            <dt className="text-xs text-stone-400 uppercase tracking-wide mb-1">Område</dt>
+            <dd>
+              <p className="text-lg font-medium text-stone-700">{company.address.city}</p>
+              <p className="text-base text-stone-500 mt-0.5">Vi utför arbetet hos kunden i Göteborg och hela Västra Götaland.</p>
             </dd>
           </div>
 

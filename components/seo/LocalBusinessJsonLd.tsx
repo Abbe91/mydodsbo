@@ -12,9 +12,8 @@ export function LocalBusinessJsonLd() {
     email:      company.email,
     address: {
       '@type':          'PostalAddress',
-      streetAddress:    company.address.street,
-      postalCode:       company.address.zip,
       addressLocality:  company.address.city,
+      addressRegion:    'Västra Götaland',
       addressCountry:   'SE',
     },
     areaServed: {

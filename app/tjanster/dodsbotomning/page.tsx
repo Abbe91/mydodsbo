@@ -92,7 +92,12 @@ export default function DodsbotomningPage() {
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
             Vad ingår i en dödsbotömning?
           </h2>
-          {/* TODO: Beskriv exakt vad ni gör steg för steg — var specifik och ärlig */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Vi tömmer hela bostaden. Möbler, kläder, husgeråd, mattor, gardiner, vitvaror
+            och allt som står i garderober, förråd, källare och på vinden. Du behöver inte
+            sortera eller bära ut något i förväg, och du behöver inte vara på plats medan
+            vi arbetar.
+          </p>
 
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-6">
             Så går en dödsbotömning till
@@ -101,17 +106,35 @@ export default function DodsbotomningPage() {
           <h3 className="text-lg md:text-xl font-semibold text-stone-800 mb-3">
             1. Inventering och genomgång
           </h3>
-          {/* TODO: Beskriv hur ni börjar varje uppdrag — vad ni tittar på, vad ni frågar */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Vi börjar med ett hembesök. Vi går igenom bostaden tillsammans och stämmer av
+            tre saker: när det passar dig att vi tömmer och städar, om du vet att det finns
+            föremål av värde som du vill sälja, och om du vill att vi värderar hela
+            bohaget. Utifrån det lämnar vi ett fast pris.
+          </p>
 
           <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
             2. Hantering av värdesaker
           </h3>
-          {/* TODO: Beskriv hur ni identifierar och hanterar värdesaker */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Finns det möbler, konst, smycken eller annat av värde går vi igenom det
+            tillsammans med dig. Värdet räknas av mot kostnaden för arbetet, och ibland
+            blir det pengar över till dig.{' '}
+            <Link href="/tjanster/vardering-och-uppkop" className="text-brand-700 hover:text-brand-800 underline underline-offset-4">
+              Läs mer om värdering och uppköp
+            </Link>.
+          </p>
 
           <h3 className="text-lg md:text-xl font-semibold text-stone-800 mt-8 mb-3">
             3. Bortforsling
           </h3>
-          {/* TODO: Beskriv hur bortforsling går till och var ni lämnar gods */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Vi forslar bort allt som ska ut och lämnar det på närmaste
+            återvinningscentral. Brukbara saker säljs vidare eller skänks.{' '}
+            <Link href="/tjanster/bortforsling" className="text-brand-700 hover:text-brand-800 underline underline-offset-4">
+              Så hanterar vi bortforslingen
+            </Link>.
+          </p>
 
           <div className="mt-12">
             <VadHanderMedSakerna />
@@ -120,12 +143,24 @@ export default function DodsbotomningPage() {
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
             Vad påverkar priset?
           </h2>
-          {/* TODO: Skriv ärligt om vilka faktorer som påverkar priset — utan att locka med påhittade rabatter */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Priset beror på bostadens storlek, hur mycket bohag som finns, vilket
+            våningsplan bostaden ligger på och om det finns hiss. Du får ett fast pris
+            efter hembesöket, och det ändras inte under arbetets gång.{' '}
+            <Link href="/priser" className="text-brand-700 hover:text-brand-800 underline underline-offset-4">
+              Se vad som påverkar priset
+            </Link>.
+          </p>
 
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mt-12 mb-4">
             Varför anlita oss?
           </h2>
-          {/* TODO: Skriv med dina egna ord — inte generiska säljfraser */}
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose">
+            Du lämnar över nyckeln och vi sköter resten. Du får ett fast pris innan vi
+            börjar, du betalar först när arbetet är godkänt, och personliga handlingar och
+            fotografier hanterar vi varsamt — det du vill spara samlar vi ihop och lämnar
+            över till dig.
+          </p>
         </div>
 
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">

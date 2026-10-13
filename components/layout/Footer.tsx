@@ -35,6 +35,7 @@ export function Footer() {
             <p className="text-sm text-stone-400 mb-4">{company.serviceArea}</p>
             <p className="text-sm">Godkänd för F-skatt</p>
             <p className="text-sm mt-1">{company.address.city}</p>
+            <p className="text-sm mt-2 text-stone-500">Vi utför arbetet hos kunden i Göteborg och Västra Götaland.</p>
           </div>
 
           {/* Services */}
