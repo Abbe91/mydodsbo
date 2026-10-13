@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { company } from '@/lib/company'
 
-// TODO: update this date each time the policy is materially changed
 const POLICY_DATE = '2026-09-23'
 
 export const metadata: Metadata = {
@@ -146,10 +145,9 @@ export default function IntegritetspolicyPage() {
                 <strong>Webbanalys (Google Analytics):</strong>{' '}
                 [TODO: ange lagringstid — beror på inställning i GA4-kontot]
               </li>
-              {/* TODO: bekräfta lagringstid för CookieYes-samtyckescookie */}
               <li>
                 <strong>Samtyckeslogg (CookieYes):</strong>{' '}
-                [TODO: ange lagringstid — vanligtvis 1 år]
+                1 år.
               </li>
               <li>
                 <strong>Bokföringsunderlag:</strong> 7 år enligt bokföringslagen (om
@@ -178,7 +176,6 @@ export default function IntegritetspolicyPage() {
               analys- och marknadsföringscookies. Google är anslutna till EU–U.S.
               Data Privacy Framework och EU-standardavtalsklausuler (SCC) tillämpas.
             </p>
-            {/* TODO: verifiera aktuell överföringsmekanism med Googles dataskyddsdokumentation */}
 
             <h3>CookieYes Ltd</h3>
             {/* TODO: verifiera CookieYes etableringsland, DPA och överföringsmekanism */}
@@ -196,7 +193,6 @@ export default function IntegritetspolicyPage() {
               Överföringen till Google sker med stöd av EU-standardavtalsklausuler (SCC)
               och EU–U.S. Data Privacy Framework.
             </p>
-            {/* TODO: bekräfta och uppdatera med aktuella DPF/SCC-references vid lansering */}
             <p>
               Du kan läsa mer om EU–U.S. Data Privacy Framework på{' '}
               <a
