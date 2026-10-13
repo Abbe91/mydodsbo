@@ -34,7 +34,7 @@ export const company = {
 
   // CookieYes site ID — set up at app.cookieyes.com
   // ▶ EDIT HERE when you create your CookieYes account (the ID in the script src URL)
-  cookieYesId:  '' as string,
+  cookieYesId:  '950167e0a9828e03ff12f05069dc7e8b',
 
   openingHours: [
     { days: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '08:00', closes: '18:00' },
