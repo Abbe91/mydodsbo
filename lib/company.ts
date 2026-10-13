@@ -1,6 +1,5 @@
 // Single source of truth for all company data.
-// Replace every placeholder value before setting SITE_LAUNCHED=true —
-// the prebuild script will fail the build if any XXX remains.
+// Set SITE_LAUNCHED=true in netlify.toml once all values below are real.
 
 // Enskild firma — intentionally empty. Never add "AB" anywhere on the site.
 const legalForm = '' as string
@@ -21,19 +20,14 @@ export const company = {
     city:   'Göteborg',
   },
 
-  phone:        'XXX-XXX XX XX',   // display format, e.g. "031-XXX XX XX"
-  phoneTel:     '+46XXXXXXXXX',    // href="tel:..." format, e.g. "+463XXXXXXXXX"
+  phone:        '072-035 45 33',
+  phoneTel:     '+46720354533',
   email:        'info@tryggdodsbo.se',
-  whatsapp:     '46XXXXXXXXX',     // wa.me/ format, e.g. "467XXXXXXXXX"
+  whatsapp:     '46720354533',
 
-  siteUrl:      'https://www.tryggdodsbo.se',
+  siteUrl:      'https://tryggdodsbo.se',
 
-  // Google Tag Manager container ID — set up at tagmanager.google.com
-  // ▶ EDIT HERE when you create your GTM container (e.g. 'GTM-XXXXXXX')
   gtmId:        'GTM-MZQWBJPZ',
-
-  // CookieYes site ID — set up at app.cookieyes.com
-  // ▶ EDIT HERE when you create your CookieYes account (the ID in the script src URL)
   cookieYesId:  '950167e0a9828e03ff12f05069dc7e8b',
 
   openingHours: [
