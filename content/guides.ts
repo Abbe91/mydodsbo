@@ -14,97 +14,86 @@ export type Guide = {
 export const guides: Guide[] = [
   {
     slug:          'vad-hander-med-ett-dodsbo',
-    title:         'Vad händer med ett dödsbo?',
-    description:   'En praktisk guide om vad som händer med ett dödsbo efter ett dödsfall och vad du som anhörig behöver tänka på.',
-    publishedDate: '2025-01-10',
+    title:         'Vad är ett dödsbo och vad händer med det?',
+    description:   'När en person dör blir allt hen ägde — pengar, bostad, möbler, skulder — ett dödsbo. Dödsboet är en egen juridisk person fram till dess att arvet är skiftat.',
+    publishedDate: '2026-10-13',
     sections: [
       {
-        heading: 'Vad är ett dödsbo?',
-        body:    'TODO: Förklara begreppet dödsbo på ett enkelt och lugnt sätt för en sörjande anhörig.',
+        heading: 'Vem bestämmer över dödsboet?',
+        body:
+          'Dödsbodelägarna förvaltar dödsboet tillsammans. Det är oftast efterlevande make eller maka, barn och andra arvingar, samt den som eventuellt är testamentstagare. Vem som är dödsbodelägare framgår av dödsfallsintyget med släktutredning från Skatteverket.\n\n' +
+          'Att de bestämmer tillsammans betyder i praktiken att alla behöver vara överens om vad som ska säljas, skänkas eller slängas.',
       },
       {
-        heading: 'Vem ansvarar för dödsboet?',
-        body:    'TODO: Beskriv dödsbodelägares ansvar och rättigheter.',
+        heading: 'Bouppteckning',
+        body:
+          'Bouppteckningen är en skriftlig sammanställning av vad den avlidne ägde och var skyldig på dödsdagen. Den ska förrättas senast tre månader efter dödsfallet och lämnas till Skatteverket inom en månad därefter.\n\n' +
+          'Ni kan göra den själva eller ta hjälp av en begravningsbyrå eller jurist. Behöver ni mer tid går det att begära anstånd hos Skatteverket.\n\n' +
+          'Finns det en bostad i dödsboet, oavsett värde, ska bouppteckning alltid göras.',
       },
       {
-        heading: 'Vilka praktiska steg behöver tas?',
-        body:    'TODO: Lista de praktiska stegen — bouppteckning, tömning, städning, försäljning.',
+        heading: 'Dödsboanmälan',
+        body:
+          'Räcker tillgångarna bara till begravningen och andra kostnader i samband med dödsfallet, och finns det ingen fastighet eller tomträtt, kan en dödsboanmälan ersätta bouppteckningen. Den görs av socialtjänsten i den avlidnes kommun och kostar ingenting.\n\n' +
+          'Kommunen gör då ett hembesök i bostaden som en del av utredningen. Bostaden får inte vara tömd innan det besöket har skett.',
       },
       {
-        heading: 'Hur kan Trygg Dödsbo hjälpa till?',
-        body:    'TODO: Kortfattat om vad ni tar hand om och hur kontaktflödet ser ut.',
+        heading: 'Arvskifte',
+        body:    'När bouppteckningen är registrerad kan arvet fördelas mellan dödsbodelägarna. Först därefter kan dödsboets konton avslutas.',
+      },
+      {
+        heading: 'När tömmer man bostaden?',
+        body:
+          'Efter bouppteckningen eller hembesöket, inte före. Däremot är det ofta bråttom när väl beslutet är taget — hyreskontraktet löper, eller en försäljning väntar.\n\n' +
+          'Många väljer att [ta hjälp med den delen](/tjanster/dodsbotomning). Att gå igenom ett helt hem är tungt, både fysiskt och känslomässigt, och det går sällan fort när man gör det själv vid sidan av allt annat.',
+      },
+      {
+        heading: 'Vad kostar det?',
+        body:    '[Läs mer om priser](/priser) och vad som påverkar kostnaden.',
       },
     ],
   },
   {
     slug:          'checklista-dodsbo',
-    title:         'Checklista för dödsbo – steg för steg',
-    description:   'En komplett checklista över allt som behöver göras när man hanterar ett dödsbo i Sverige.',
-    publishedDate: '2025-02-05',
+    title:         'Checklista när en anhörig gått bort',
+    description:   'Det är mycket som ska göras efter ett dödsfall, och allt behöver inte göras på en gång. Den här listan är ordnad efter vad som brådskar.',
+    publishedDate: '2026-10-13',
     sections: [
       {
-        heading: 'Direkt efter dödsfallet',
-        body:    'TODO: Lista åtgärder vecka 1 — anmälan till Skatteverket, begravning, etc.',
+        heading: 'Första veckan',
+        body:
+          '**Informera de närmaste.** Dödsbodelägare, släkt, vänner, grannar, arbetsgivare och eventuell hemtjänst eller städfirma.\n\n' +
+          '**Myndigheterna sköter sig själva.** Läkaren skickar dödsbeviset till Skatteverket, och därifrån går informationen vidare till Försäkringskassan, kommunen och andra myndigheter. Du behöver inte kontakta dem själv.\n\n' +
+          '**Beställ dödsfallsintyg med släktutredning** från Skatteverket. Det visar vem som är dödsbodelägare och behövs i nästan alla kontakter framöver.\n\n' +
+          '**Planera begravningen.** Den ska normalt ske inom en månad från dödsfallet.\n\n' +
+          '**Samla papper.** Räkningar, avtal och kontoutdrag i en pärm. Öppna post som kommer till den avlidne.',
       },
       {
-        heading: 'Bouppteckning',
-        body:    'TODO: Förklara bouppteckning, tidsfrister och vem som utför den.',
+        heading: 'Inom någon månad',
+        body:
+          '**Begär eftersändning av posten** till den som sköter dödsboet. Reklam och post går inte att stoppa, men den kan styras om.\n\n' +
+          '**Kontakta banken.** Stoppa autogiron — men inte sådant som fortfarande behövs, till exempel larm eller försäkring på bostaden.\n\n' +
+          '**Säg upp abonnemang och avtal:** telefon, bredband, tv, tidningar, el, medlemskap och föreningar.\n\n' +
+          '**Se över hemförsäkringen.** Bostaden står ofta tom ett tag, och försäkringen behöver vanligtvis vara kvar till dess att den är tömd och överlämnad.\n\n' +
+          '**Säg upp hyreskontraktet** om det är en hyresrätt. Uppsägningstiden styr hur lång tid ni har på er att tömma bostaden.',
       },
       {
-        heading: 'Tömning och städning av bostaden',
-        body:    'TODO: Steg för att planera och genomföra tömning — vad gör man själv, vad lämnar man till proffs.',
+        heading: 'Inom fyra månader',
+        body:
+          '**Bouppteckningen** ska förrättas senast tre månader efter dödsfallet och lämnas till Skatteverket inom en månad därefter. Behöver ni mer tid kan ni begära anstånd hos Skatteverket för själva förrättningen.\n\n' +
+          '**Dödsboanmälan** kan i vissa fall ersätta bouppteckningen — när tillgångarna bara räcker till begravningen och det inte finns någon fastighet eller tomträtt. Den görs av socialtjänsten i den avlidnes kommun.',
       },
       {
-        heading: 'Avsluta abonnemang och kontrakt',
-        body:    'TODO: Hyra/bostadsrätt, el, internet, tidningar, bank, försäkringar.',
-      },
-    ],
-  },
-  {
-    slug:          'hur-mycket-kostar-det-att-tomma-ett-dodsbo',
-    title:         'Hur mycket kostar det att tömma ett dödsbo?',
-    description:   'Vad påverkar priset för dödsbotömning? Här reder vi ut vad du kan förvänta dig att betala och vad som ingår.',
-    publishedDate: '2025-03-12',
-    sections: [
-      {
-        heading: 'Vad påverkar priset?',
-        body:    'TODO: Storlek, bohagsmängd, våningsplan, avstånd till bil, specialföremål.',
+        heading: 'Det här missar många',
+        body:
+          '**Töm inte bostaden före bouppteckningen.** Allt som fanns i bostaden på dödsdagen ska tas upp och värderas. Är saker redan borta blir det svårt att göra rätt.\n\n' +
+          '**Töm inte heller bostaden före kommunens hembesök** om ni ska ansöka om dödsboanmälan. Hembesöket är en del av utredningen, och är bostaden redan tömd kan det hindra att dödsboanmälan görs.\n\n' +
+          '**Kasta inte papper i förväg.** Testamente, försäkringsbrev, bankpapper, skuldebrev och fakturor behövs i bouppteckningen.\n\n' +
+          '**Dödsboet ska deklarera** året efter dödsfallet. Kontrollera att Skatteverket har rätt adress till dödsboet.',
       },
       {
-        heading: 'Timpris vs fast pris',
-        body:    'TODO: Förklara skillnaden och vad som passar bäst i olika situationer.',
-      },
-      {
-        heading: 'RUT-avdrag för dödsbo',
-        body:    'TODO: Förklara om och hur RUT-avdrag kan tillämpas på dödsbo­städning.',
-      },
-      {
-        heading: 'Kostnadsfri bedömning',
-        body:    'TODO: Beskriv hur ni gör er bedömning och varför ni alltid besiktar före offert.',
-      },
-    ],
-  },
-  {
-    slug:          'dodsbo-goteborg',
-    title:         'Dödsbo i Göteborg – det du behöver veta',
-    description:   'Lokal guide för dig som hanterar ett dödsbo i Göteborg. Praktiska råd om allt från bortforsling till återvinning.',
-    publishedDate: '2025-04-08',
-    sections: [
-      {
-        heading: 'Återvinningscentraler i Göteborg',
-        body:    'TODO: Nämn de relevanta ÅVC:erna och öppettiderna — faktabaserat, uppdateras av användaren.',
-      },
-      {
-        heading: 'Regler för bortforsling i Göteborg',
-        body:    'TODO: Lokala regler för transport av bohag, tunglyft i hyreshus, etc.',
-      },
-      {
-        heading: 'Välgörenhetsorganisationer som tar emot möbler',
-        body:    'TODO: Lista lokala organisationer — Erikshjälpen, Myrorna, Röda Korset m.fl. i Göteborg.',
-      },
-      {
-        heading: 'Varför anlita ett lokalt företag?',
-        body:    'TODO: Skriv om fördelarna med lokal kännedom — utan att göra det till en reklampitch.',
+        heading: 'Mer information',
+        body:    'Efterlevandeguiden.se drivs av Skatteverket, Försäkringskassan och Pensionsmyndigheten och har en checklista du kan anpassa efter din situation.',
       },
     ],
   },

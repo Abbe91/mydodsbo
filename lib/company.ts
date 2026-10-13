@@ -15,9 +15,9 @@ export const company = {
   orgNr:     '' as string,
 
   address: {
-    street: '' as string, // not published — confirm with owner before adding
-    zip:    '' as string, // not published
-    city:   'Göteborg',
+    street: 'Victor Hasselblads Gata 9',
+    zip:    '421 31',
+    city:   'Västra Frölunda',
   },
 
   phone:        '072-035 45 33',

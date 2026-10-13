@@ -13,6 +13,7 @@ const links: NavLink[] = [
   { href: '/tjanster/vardering-och-uppkop', label: '— Värdering & uppköp' },
   { href: '/tjanster/bortforsling',       label: '— Bortforsling' },
   { href: '/priser',          label: 'Priser' },
+  { href: '/guide',           label: 'Guider' },
   { href: '/uppdrag',         label: 'Uppdrag' },
   { href: '/om-oss',          label: 'Om oss' },
   { href: '/kontakt',         label: 'Kontakt' },

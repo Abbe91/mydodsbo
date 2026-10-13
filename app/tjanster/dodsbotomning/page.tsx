@@ -154,6 +154,28 @@ export default function DodsbotomningPage() {
           </div>
         </div>
 
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">
+          <h2 className="text-xl font-semibold text-stone-900 mb-4">Relaterade guider</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link
+                href="/guide/vad-hander-med-ett-dodsbo"
+                className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
+              >
+                Vad är ett dödsbo och vad händer med det? →
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guide/checklista-dodsbo"
+                className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
+              >
+                Checklista när en anhörig gått bort →
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         <div className="pb-20 md:pb-28">
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
             Kostnadsfri bedömning

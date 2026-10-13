@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
@@ -139,6 +140,18 @@ export default function PriserPage() {
             Fakturan kommer när arbetet är utfört och du har godkänt resultatet. Ingen
             förskottsbetalning.
           </p>
+        </div>
+
+        <div className="max-w-prose border-t border-stone-200 pt-10 mb-10">
+          <p className="text-stone-600 mb-3">
+            Ny till dödsbo och undrar hur processen ser ut?
+          </p>
+          <Link
+            href="/guide/vad-hander-med-ett-dodsbo"
+            className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
+          >
+            Läs: Vad är ett dödsbo och vad händer med det? →
+          </Link>
         </div>
 
         <div className="max-w-prose border-t border-stone-200 pt-10 mb-16 md:mb-24">

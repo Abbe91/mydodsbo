@@ -11,9 +11,11 @@ export function LocalBusinessJsonLd() {
     telephone:  company.phoneTel,
     email:      company.email,
     address: {
-      '@type':         'PostalAddress',
-      addressLocality: company.address.city,
-      addressCountry:  'SE',
+      '@type':          'PostalAddress',
+      streetAddress:    company.address.street,
+      postalCode:       company.address.zip,
+      addressLocality:  company.address.city,
+      addressCountry:   'SE',
     },
     areaServed: {
       '@type': 'AdministrativeArea',

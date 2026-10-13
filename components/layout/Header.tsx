@@ -5,6 +5,7 @@ import { company } from '@/lib/company'
 const navLinks = [
   { href: '/tjanster', label: 'Tjänster' },
   { href: '/priser',   label: 'Priser' },
+  { href: '/guide',    label: 'Guider' },
   { href: '/uppdrag',  label: 'Uppdrag' },
   { href: '/om-oss',   label: 'Om oss' },
 ]

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { guides } from '@/content/guides'
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -22,6 +23,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: guide.description,
     alternates:  { canonical: `/guide/${guide.slug}` },
   }
+}
+
+function renderBody(body: string): ReactNode[] {
+  return body.split('\n\n').map((para, pIdx) => {
+    const parts: ReactNode[] = []
+    const pattern = /\*\*(.+?)\*\*|\[(.+?)\]\((.+?)\)/g
+    let last = 0
+    let m: ReturnType<typeof pattern.exec>
+    let k = 0
+    while ((m = pattern.exec(para)) !== null) {
+      if (m.index > last) parts.push(para.slice(last, m.index))
+      if (m[0].startsWith('**')) {
+        parts.push(<strong key={k++}>{m[1]}</strong>)
+      } else {
+        parts.push(<Link key={k++} href={m[3]!} className="text-brand-700 hover:text-brand-800 underline underline-offset-4">{m[2]}</Link>)
+      }
+      last = m.index + m[0].length
+    }
+    if (last < para.length) parts.push(para.slice(last))
+    return (
+      <p key={pIdx} className="text-base md:text-lg text-stone-600 leading-relaxed mb-3 last:mb-0">
+        {parts}
+      </p>
+    )
+  })
 }
 
 export default async function GuidePage({ params }: Props) {
@@ -86,7 +112,7 @@ export default async function GuidePage({ params }: Props) {
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 leading-tight mb-4">
               {section.heading}
             </h2>
-            <p className="text-base md:text-lg text-stone-600 leading-relaxed">{section.body}</p>
+            <div>{renderBody(section.body)}</div>
           </section>
         ))}
 
@@ -97,12 +123,20 @@ export default async function GuidePage({ params }: Props) {
           <p className="text-stone-600 mb-4">
             Vi erbjuder kostnadsfri bedömning på plats. Kontakta oss så berättar vi mer.
           </p>
-          <Link
-            href="/kontakt"
-            className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
-          >
-            Kontakta oss →
-          </Link>
+          <div className="flex flex-wrap gap-5">
+            <Link
+              href="/tjanster/dodsbotomning"
+              className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
+            >
+              Dödsbotömning →
+            </Link>
+            <Link
+              href="/kontakt"
+              className="text-brand-700 hover:text-brand-800 font-medium underline underline-offset-4"
+            >
+              Kontakta oss →
+            </Link>
+          </div>
         </div>
 
         {/* Related guides */}
