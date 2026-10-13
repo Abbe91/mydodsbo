@@ -1,27 +1,16 @@
-// Inline script that sets Consent Mode v2 defaults BEFORE GTM loads.
-// Must render in <head> before the GTM script.
+// Sets Consent Mode v2 defaults BEFORE CookieYes and GTM.
+//
+// Using an external src (not dangerouslySetInnerHTML) so Next.js App Router
+// places it in the same "external scripts" cluster as the CookieYes script
+// and respects JSX order. Inline dangerouslySetInnerHTML scripts are emitted
+// after all metadata tags in the static HTML output, which would put them
+// after the CookieYes <script> tag even though the JSX order is correct.
 export function ConsentInit() {
-  const script = `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{
-  ad_storage:              'denied',
-  ad_user_data:            'denied',
-  ad_personalization:      'denied',
-  analytics_storage:       'denied',
-  functionality_storage:   'denied',
-  personalization_storage: 'denied',
-  security_storage:        'granted',
-  wait_for_update:         500
-});
-gtag('set','ads_data_redaction',true);
-gtag('set','url_passthrough',true);
-`.trim()
-
   return (
+    // eslint-disable-next-line @next/next/no-sync-scripts
     <script
       id="consent-init"
-      dangerouslySetInnerHTML={{ __html: script }}
+      src="/consent-init.js"
     />
   )
 }

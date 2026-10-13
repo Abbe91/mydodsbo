@@ -20,6 +20,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# consent-init.js must not be immutably cached — if consent defaults change
+# browsers must pick up the new version immediately.
+[[headers]]
+  for = "/consent-init.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
