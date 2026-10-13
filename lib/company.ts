@@ -30,7 +30,7 @@ export const company = {
 
   // Google Tag Manager container ID — set up at tagmanager.google.com
   // ▶ EDIT HERE when you create your GTM container (e.g. 'GTM-XXXXXXX')
-  gtmId:        '' as string,
+  gtmId:        'GTM-MZQWBJPZ',
 
   // CookieYes site ID — set up at app.cookieyes.com
   // ▶ EDIT HERE when you create your CookieYes account (the ID in the script src URL)
