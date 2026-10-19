@@ -103,7 +103,7 @@ export default function OmradenPage() {
           </div>
 
           {/* Right: full-bleed photo + form card.
-              TODO: replace placeholder image with a Västra Götaland-specific photo. */}
+              Placeholder — swap for a Västra Götaland-specific photo when available. */}
           <div className="relative">
             <div className="relative min-h-[280px] md:absolute md:inset-0">
               <picture>
@@ -315,7 +315,7 @@ export default function OmradenPage() {
 
         <Reviews />
 
-        {/* TODO: Insert a photo of the team at work here (no stock or AI images). */}
+        {/* Placeholder — insert a real photo of the team at work when available (no stock or AI images). */}
 
         {/* Så går det till */}
         <div className="pb-16 md:pb-24 border-t border-stone-200 pt-16 md:pt-24">

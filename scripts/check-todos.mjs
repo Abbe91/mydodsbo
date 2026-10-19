@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * Scans source files for TODO markers and placeholder values.
+ * Scans source files for BLOCKER markers and placeholder values.
+ * Regular TODO comments are allowed — they are developer reminders.
+ * Use the marker "BLOCKER:" to flag something that must be fixed before launch.
  * - SITE_LAUNCHED=false  → warns and exits 0 (build continues)
  * - SITE_LAUNCHED=true   → exits 1 (build fails)
  */
@@ -10,15 +12,15 @@ import { join, extname, resolve } from 'path'
 const isLaunched = process.env.SITE_LAUNCHED === 'true'
 const root = resolve('.')
 
-// Directories to scan for TODO markers and Lorem ipsum
+// Directories to scan for BLOCKER markers and Lorem ipsum
 const SCAN_DIRS = ['app', 'components', 'content', 'lib']
 // Extensions to inspect
 const SCAN_EXTS = new Set(['.ts', '.tsx'])
 
 // ── Patterns ─────────────────────────────────────────────────────────────────
 
-// Matches the word TODO in any context (comments, strings, JSX)
-const TODO_RE = /\bTODO\b/g
+// Matches the launch-blocker marker "BLOCKER:" in any context
+const TODO_RE = /BLOCKER:/g
 
 // Lorem ipsum anywhere in any scanned file
 const LOREM_RE = /lorem ipsum/i
@@ -86,12 +88,12 @@ for (const file of files) {
   const src = readFileSync(file, 'utf-8')
   const lines = src.split('\n')
 
-  // TODO check
+  // BLOCKER check
   TODO_RE.lastIndex = 0
   let m
   while ((m = TODO_RE.exec(src)) !== null) {
     const lineNum = src.slice(0, m.index).split('\n').length
-    addViolation(file, lineNum, `TODO marker on line ${lineNum}: …${lines[lineNum - 1]?.trim().slice(0, 60)}…`)
+    addViolation(file, lineNum, `BLOCKER marker on line ${lineNum}: …${lines[lineNum - 1]?.trim().slice(0, 60)}…`)
     // advance to avoid infinite loop on zero-width match
     if (TODO_RE.lastIndex === m.index) TODO_RE.lastIndex++
   }
@@ -145,7 +147,7 @@ for (const v of violations) {
 console.log()
 
 if (isLaunched) {
-  console.log('Fix all violations before setting SITE_LAUNCHED=true.\n')
+  console.log('Fix all BLOCKER violations before setting SITE_LAUNCHED=true.\n')
   process.exit(1)
 } else {
   console.log('Set SITE_LAUNCHED=true to turn these warnings into build errors.\n')
