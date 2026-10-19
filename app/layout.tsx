@@ -59,6 +59,10 @@ export const metadata: Metadata = {
   robots: isLaunched
     ? { index: true, follow: true }
     : { index: false, follow: false },
+  // Required for Google Search Console — do not remove or verification breaks.
+  verification: {
+    google: 'l_2Aa1MaOUdkPCzdJKR4aVedLzRuZumv-Gd3lzAPt5w',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
