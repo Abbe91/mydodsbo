@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { preload } from 'react-dom'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
+import { HeroContactForm } from '@/components/forms/HeroContactForm'
+import { Reviews } from '@/components/content/Reviews'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
 import { company } from '@/lib/company'
 
@@ -91,12 +93,13 @@ export default function HomePage() {
 
       {/* ── Hero ──────────────────────────────────────────────────────────
           Two-column: left = content card (solid bg, full WCAG AA contrast),
-          right = full-bleed team photo. Mobile: card above, image below.
+          right = full-bleed team photo with form card floating on top.
+          Mobile: content card → image → form card (no overlay).
          ──────────────────────────────────────────────────────────────── */}
       <section className="overflow-hidden border-b border-stone-100">
         <div className="flex flex-col md:grid md:grid-cols-[55%_45%] md:min-h-[580px] lg:min-h-[640px]">
 
-          {/* Content card — white background guarantees contrast over any photo */}
+          {/* Left: content card — white background guarantees contrast */}
           <div className="bg-white flex items-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-14 md:py-0">
             <div className="w-full">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
@@ -147,37 +150,70 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* fill-image pattern: parent is relative, img is absolute inset-0 */}
-          <div className="relative min-h-[260px] md:min-h-0">
-            <picture>
-              <source
-                type="image/avif"
-                srcSet="/images/hero-430w.avif 430w, /images/hero-860w.avif 860w"
-                sizes="(max-width: 768px) 100vw, 45vw"
-              />
-              <source
-                type="image/webp"
-                srcSet="/images/hero-430w.webp 430w, /images/hero-860w.webp 860w"
-                sizes="(max-width: 768px) 100vw, 45vw"
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/hero-860w.jpg"
-                alt="Trygg Dödsbo team i arbete på ett dödsbo"
-                width={860}
-                height={645}
-                fetchPriority="high"
-                decoding="sync"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-            </picture>
+          {/* Right: full-bleed photo + form card overlay.
+              The outer div is `relative` so both children can be absolute on desktop.
+              On mobile everything is in normal flow: image block → form block. */}
+          <div className="relative">
+
+            {/* Image: block with min-height on mobile; absolute fill on desktop */}
+            <div className="relative min-h-[280px] md:absolute md:inset-0">
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/images/hero-430w.avif 430w, /images/hero-860w.avif 860w"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/images/hero-430w.webp 430w, /images/hero-860w.webp 860w"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/hero-860w.jpg"
+                  alt="Trygg Dödsbo team i arbete på ett dödsbo"
+                  width={860}
+                  height={645}
+                  fetchPriority="high"
+                  decoding="sync"
+                  className="absolute inset-0 w-full h-full object-cover object-[25%_50%]"
+                />
+              </picture>
+            </div>
+
+            {/* Form card:
+                Mobile  — static in flow, below image; open styling with top divider.
+                Desktop — absolutely positioned on the right half of the image column,
+                          vertically centred, solid white card so text is always WCAG AA. */}
+            <div className="
+              md:absolute md:inset-y-0 md:right-0
+              md:flex md:items-center md:pr-7 lg:pr-9
+            ">
+              <div className="
+                px-6 pt-8 pb-10 border-t border-stone-200
+                md:px-0 md:pt-0 md:pb-0 md:border-0
+                md:w-72 lg:w-80
+                md:bg-white md:rounded-xl md:shadow-xl
+                md:ring-1 md:ring-stone-900/[.06]
+                md:p-6 lg:p-7
+              ">
+                <p className="text-sm font-semibold text-stone-800 mb-0.5">
+                  Skriv ett meddelande
+                </p>
+                <p className="text-xs text-stone-500 mb-4">
+                  Vi återkommer inom en arbetsdag.
+                </p>
+                <HeroContactForm />
+              </div>
+            </div>
+
           </div>
 
         </div>
       </section>
 
+      {/* ── Vad vi gör ────────────────────────────────────────────────────── */}
       <div className="container">
-        {/* Vad vi gör */}
         <div className="pt-16 md:pt-24 pb-16 md:pb-24">
           <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4 max-w-2xl">
             Vad vi gör
@@ -205,6 +241,62 @@ export default function HomePage() {
             Se alla tjänster →
           </Link>
         </div>
+      </div>
+
+      {/* ── Välkommen ─────────────────────────────────────────────────────
+          Two-column: text left, image right. Same grid width as the hero.
+          Mobile: text above, image placeholder below.
+         ──────────────────────────────────────────────────────────────── */}
+      <section className="overflow-hidden border-b border-stone-100">
+        <div className="flex flex-col md:grid md:grid-cols-[55%_45%] md:min-h-[460px]">
+
+          {/* Left: text */}
+          <div className="flex items-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-14 md:py-0">
+            <div className="w-full max-w-xl">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-stone-900 leading-tight mb-6">
+                Välkommen till Trygg Dödsbo
+              </h2>
+              <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-5">
+                Vi tar hand om hela processen när ett dödsbo ska tömmas — tömning, sortering,
+                värdering, bortforsling och städning. Du lämnar över nyckeln och slipper tänka
+                på det praktiska.
+              </p>
+              <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-8">
+                Efter ett kostnadsfritt hembesök får du ett fast pris som inte ändras under
+                arbetets gång. Du betalar mot faktura först när arbetet är godkänt.
+              </p>
+              <Link
+                href="/kontakt"
+                className="inline-block bg-warm-600 hover:bg-warm-700 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors"
+              >
+                Kontakta oss
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: photo */}
+          <div className="relative min-h-[280px] md:min-h-0">
+            <picture>
+              <source type="image/avif" srcSet="/images/dodsbo-trygg-600w.avif" sizes="(max-width: 768px) 100vw, 45vw" />
+              <source type="image/webp" srcSet="/images/dodsbo-trygg-600w.webp" sizes="(max-width: 768px) 100vw, 45vw" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/dodsbo-trygg-600w.jpg"
+                alt="Trygg Dödsbo i arbete med ett dödsbo"
+                width={600}
+                height={450}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </picture>
+          </div>
+
+        </div>
+      </section>
+
+      <div className="container">
+        <Reviews />
 
         {/* Uppdrag Göteborg image */}
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">

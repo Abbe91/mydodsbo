@@ -11,6 +11,7 @@ const services = [
 const info = [
   { href: '/priser',             label: 'Priser' },
   { href: '/guide',              label: 'Guider' },
+  { href: '/omraden',            label: 'Västra Götaland' },
   { href: '/omraden/goteborg',   label: 'Göteborg' },
   { href: '/uppdrag',            label: 'Genomförda uppdrag' },
   { href: '/om-oss',             label: 'Om oss' },

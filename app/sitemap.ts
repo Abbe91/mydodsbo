@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tjanster/vardering-och-uppkop`,  priority: 0.8,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/tjanster/bortforsling`,          priority: 0.8,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/priser`,                         priority: 0.9,  changeFrequency: 'monthly', lastModified: now },
+    { url: `${base}/omraden`,                         priority: 0.9,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/omraden/goteborg`,               priority: 0.85, changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/guide`,                           priority: 0.7,  changeFrequency: 'monthly', lastModified: now },
     { url: `${base}/uppdrag`,                        priority: 0.7,  changeFrequency: 'monthly', lastModified: now },

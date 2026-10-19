@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { preload } from 'react-dom'
 import { FaqItem } from '@/components/ui/FaqItem'
 import { ContactForm } from '@/components/forms/ContactForm'
+import { HeroContactForm } from '@/components/forms/HeroContactForm'
+import { Reviews } from '@/components/content/Reviews'
 import { ServiceJsonLd } from '@/components/seo/ServiceJsonLd'
 import { FaqPageJsonLd } from '@/components/seo/FaqPageJsonLd'
 import { VadHanderMedSakerna } from '@/components/content/VadHanderMedSakerna'
@@ -33,13 +35,18 @@ const faqs = [
   },
 ]
 
-const breadcrumbs = [
-  { name: 'Hem', href: '/' },
-  { name: 'Tjänster', href: '/tjanster' },
-  { name: 'Dödsbotömning', href: '/tjanster/dodsbotomning' },
+const trustPoints = [
+  'Kostnadsfritt hembesök',
+  'Fast pris efter hembesök',
+  'Betalning efter utfört arbete',
 ]
 
 export default function DodsbotomningPage() {
+  preload('/images/tomma-dodsbo-600w.avif', {
+    as:           'image',
+    fetchPriority: 'high',
+  })
+
   return (
     <>
       <ServiceJsonLd
@@ -49,43 +56,109 @@ export default function DodsbotomningPage() {
       />
       <FaqPageJsonLd faqs={faqs} />
 
-      <div className="bg-stone-100 border-b border-stone-200 py-3">
-        <div className="container">
-          <Breadcrumb items={breadcrumbs} />
+      {/* ── Hero ──────────────────────────────────────────────────────────
+          Same layout as /omraden: text left, image right, form card over image.
+          Mobile: content → image → form card (no overlay).
+         ──────────────────────────────────────────────────────────────── */}
+      <section id="formular" className="overflow-hidden border-b border-stone-100">
+        <div className="flex flex-col md:grid md:grid-cols-[55%_45%] md:min-h-[580px] lg:min-h-[640px]">
+
+          {/* Left: content card */}
+          <div className="bg-white flex items-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 py-14 md:py-0">
+            <div className="w-full">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
+                Tjänster
+              </p>
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] mb-6 max-w-xl">
+                Dödsbotömning i Göteborg
+              </h1>
+              <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-8 max-w-xl">
+                Vi tömmer bostaden noggrant och hanterar bohaget med respekt — sortering,
+                återbruk och bortforsling ingår. Du lämnar över nyckeln, vi sköter resten.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-7 max-w-xl">
+                <a
+                  href="#formular"
+                  className="w-full sm:w-auto bg-warm-600 hover:bg-warm-700 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+                >
+                  Kostnadsfri bedömning
+                </a>
+                <a
+                  href={`tel:${company.phoneTel}`}
+                  className="w-full sm:w-auto border border-stone-300 hover:border-brand-700 text-stone-700 hover:text-brand-700 font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+                >
+                  Ring oss
+                </a>
+              </div>
+
+              <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+                {trustPoints.map(point => (
+                  <li key={point} className="flex items-center gap-2 text-sm text-stone-600">
+                    <svg
+                      className="w-4 h-4 shrink-0 text-warm-600"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right: full-bleed photo + form card */}
+          <div className="relative">
+            <div className="relative min-h-[280px] md:absolute md:inset-0">
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/images/tomma-dodsbo-600w.avif"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/images/tomma-dodsbo-600w.webp"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/tomma-dodsbo-600w.jpg"
+                  alt="Dödsbotömning i Göteborg – Trygg Dödsbo"
+                  width={600}
+                  height={900}
+                  fetchPriority="high"
+                  decoding="sync"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </picture>
+            </div>
+
+            <div className="md:absolute md:inset-y-0 md:right-0 md:flex md:items-center md:pr-7 lg:pr-9">
+              <div className="
+                px-6 pt-8 pb-10 border-t border-stone-200
+                md:px-0 md:pt-0 md:pb-0 md:border-0
+                md:w-72 lg:w-80
+                md:bg-white md:rounded-xl md:shadow-xl
+                md:ring-1 md:ring-stone-900/[.06]
+                md:p-6 lg:p-7
+              ">
+                <p className="text-sm font-semibold text-stone-800 mb-0.5">
+                  Skriv ett meddelande
+                </p>
+                <p className="text-xs text-stone-500 mb-4">
+                  Vi återkommer inom en arbetsdag.
+                </p>
+                <HeroContactForm />
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-
-      <div className="container pt-14 md:pt-20 pb-10 md:pb-14">
-        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-warm-600 mb-4">
-          Tjänster
-        </p>
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05] max-w-3xl mb-6">
-          Dödsbotömning i Göteborg
-        </h1>
-        <a
-          href={`tel:${company.phoneTel}`}
-          className="text-stone-700 hover:text-brand-700 font-medium underline underline-offset-4 decoration-stone-300 hover:decoration-brand-700 transition-colors"
-        >
-          Ring oss direkt: {company.phone}
-        </a>
-      </div>
-
-      <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
-        <picture>
-          <source type="image/avif" srcSet="/images/tomma-dodsbo-600w.avif" />
-          <source type="image/webp" srcSet="/images/tomma-dodsbo-600w.webp" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/tomma-dodsbo-600w.jpg"
-            alt="Dödsbotömning i Göteborg – Trygg Dödsbo"
-            width={600}
-            height={900}
-            fetchPriority="high"
-            decoding="sync"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-        </picture>
-      </div>
+      </section>
 
       <div className="container">
         <div className="pt-16 md:pt-24 pb-16 md:pb-24">
@@ -163,16 +236,18 @@ export default function DodsbotomningPage() {
           </p>
         </div>
 
+        <Reviews />
+
         <div className="relative max-w-3xl aspect-video mb-16 md:mb-24 overflow-hidden rounded-lg">
           <picture>
-            <source type="image/avif" srcSet="/images/tomma-dodsbo-600w.avif" />
-            <source type="image/webp" srcSet="/images/tomma-dodsbo-600w.webp" />
+            <source type="image/avif" srcSet="/images/dodsbo-trygg-600w.avif" />
+            <source type="image/webp" srcSet="/images/dodsbo-trygg-600w.webp" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/tomma-dodsbo-600w.jpg"
-              alt="Dödsbotömning i Göteborg – Trygg Dödsbo"
+              src="/images/dodsbo-trygg-600w.jpg"
+              alt="Trygg Dödsbo i arbete"
               width={600}
-              height={900}
+              height={450}
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover object-center"
@@ -211,14 +286,33 @@ export default function DodsbotomningPage() {
           </ul>
         </div>
 
-        <div className="pb-20 md:pb-28">
-          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-6 max-w-prose">
-            Kostnadsfri bedömning
+        <div className="pb-20 md:pb-28 max-w-prose border-t border-stone-200 pt-10">
+          <h2 className="text-2xl md:text-4xl font-bold text-stone-900 leading-tight mb-4">
+            Kom igång idag
           </h2>
-          <p className="text-base md:text-lg text-stone-600 leading-relaxed max-w-prose mb-10">
-            Vi besiktar och lämnar offert utan kostnad eller förbindelser.
+          <p className="text-base md:text-lg text-stone-600 leading-relaxed mb-7">
+            Ring oss direkt eller fyll i formuläret — vi återkommer inom en arbetsdag
+            med en kostnadsfri bedömning.
           </p>
+          <div className="flex flex-col sm:flex-row gap-3 mb-12">
+            <a
+              href={`tel:${company.phoneTel}`}
+              className="w-full sm:w-auto bg-warm-600 hover:bg-warm-700 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+            >
+              Ring {company.phone}
+            </a>
+            <a
+              href="#formular"
+              className="w-full sm:w-auto border border-stone-300 hover:border-brand-700 text-stone-700 hover:text-brand-700 font-semibold px-6 py-3.5 rounded-lg transition-colors text-center"
+            >
+              Till formuläret ↑
+            </a>
+          </div>
           <div className="max-w-xl">
+            <h3 className="text-lg font-semibold text-stone-900 mb-2">Kostnadsfri bedömning</h3>
+            <p className="text-base text-stone-600 leading-relaxed mb-6">
+              Vi besiktar och lämnar offert utan kostnad eller förbindelser.
+            </p>
             <ContactForm />
           </div>
         </div>
