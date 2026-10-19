@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { company } from '@/lib/company'
 
-const POLICY_DATE = '2026-09-23'
+const POLICY_DATE = '2026-10-19'
 
 export const metadata: Metadata = {
   title:       'Integritetspolicy',
@@ -111,6 +111,21 @@ export default function IntegritetspolicyPage() {
               berättigat intresse (artikel 6.1 f) — att kunna visa att samtycke inhämtats.
             </p>
 
+            <h3>2.4 Sessionsinspelning och beteendeanalys (Microsoft Clarity via GTM)</h3>
+            <p>
+              Om du samtycker till analyticscookies läses Microsoft Clarity in via
+              Google Tag Manager. Clarity registrerar hur besökare interagerar med
+              webbplatsen — musrörelser, klick, scrollning och videoinspelningar av
+              sessioner. IP-adressen maskeras innan data skickas till Microsoft.
+            </p>
+            <p>
+              <strong>Ändamål:</strong> Att förstå hur webbplatsen används och
+              identifiera förbättringsområden i användarupplevelsen.
+            </p>
+            <p>
+              <strong>Rättslig grund:</strong> Samtycke (artikel 6.1 a GDPR).
+            </p>
+
             {/* ── 3. Lagringstid ── */}
             <h2>Hur länge sparar vi uppgifterna?</h2>
             <p>
@@ -129,6 +144,14 @@ export default function IntegritetspolicyPage() {
               <li>
                 <strong>Samtyckeslogg (CookieYes):</strong>{' '}
                 1 år.
+              </li>
+              <li>
+                <strong>Sessionsinspelningar (Microsoft Clarity):</strong>{' '}
+                30 dagar, därefter raderas de automatiskt av Microsoft.
+              </li>
+              <li>
+                <strong>Beteendeanalysdata (Microsoft Clarity):</strong>{' '}
+                Upp till 13 månader.
               </li>
               <li>
                 <strong>Bokföringsunderlag:</strong> 7 år enligt bokföringslagen (om
@@ -165,13 +188,21 @@ export default function IntegritetspolicyPage() {
               sker med stöd av EU-kommissionens adekvansbeslut för Storbritannien.
             </p>
 
+            <h3>Microsoft Corporation (USA)</h3>
+            <p>
+              Microsoft tillhandahåller Clarity, ett verktyg för sessionsinspelning och
+              beteendeanalys. Clarity laddas enbart om du har godkänt analyticscookies.
+              Microsoft är anslutet till EU–U.S. Data Privacy Framework (DPF) och
+              EU-standardavtalsklausuler (SCC) tillämpas för överföring till USA.
+            </p>
+
             {/* ── 5. Tredjelandsöverföring ── */}
             <h2>Överföring till tredjeland</h2>
             <p>
-              Netlify och Google är etablerade i USA, ett land utanför EU/EES. Överföringen
-              till Netlify sker med stöd av EU–U.S. Data Privacy Framework (DPF).
-              Överföringen till Google sker med stöd av EU-standardavtalsklausuler (SCC)
-              och EU–U.S. Data Privacy Framework.
+              Netlify, Google och Microsoft är etablerade i USA, ett land utanför EU/EES.
+              Överföringen till Netlify sker med stöd av EU–U.S. Data Privacy Framework
+              (DPF). Överföringen till Google och Microsoft sker med stöd av
+              EU-standardavtalsklausuler (SCC) och EU–U.S. Data Privacy Framework.
             </p>
             <p>
               Du kan läsa mer om EU–U.S. Data Privacy Framework på{' '}
